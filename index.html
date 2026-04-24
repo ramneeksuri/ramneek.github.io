@@ -4,702 +4,1720 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ramneek Suri, CPA — Technical Accounting</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Ramneek Suri, CPA — Technical Accounting for AI &amp; SaaS</title>
 <style>
+  /* ─────────────────────────────────────────────────────────────
+     ANTHROPIC-BRANDED PERSONAL SITE · Ramneek Suri
+     Ivory canvas · Slate ink · Clay spark · Editorial rhythm
+     ───────────────────────────────────────────────────────────── */
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500&display=swap');
+
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0D0D0F;
-    --bg-elevated: #161618;
-    --bg-card: #1C1C1F;
-    --bg-card-hover: #222225;
-    --fg: #F0EFE6;
-    --fg-secondary: #B0AFa6;
-    --fg-tertiary: #6E6E6E;
-    --accent: #D97757;
-    --accent-soft: rgba(217,119,87,0.12);
-    --accent-glow: rgba(217,119,87,0.06);
-    --accent-hover: #E8906E;
-    --beige: #D4A574;
-    --beige-soft: rgba(212,165,116,0.10);
-    --border: #2A2A2D;
-    --border-light: #1F1F22;
+    /* Dark theme — ink bg, ivory text, orange accent */
+    --ivory:       #0D0D0F;   /* page bg (dark) */
+    --ivory-deep:  #161618;   /* elevated surface */
+    --oat:         #1C1C1F;
+    --slate:       #F0EFE6;   /* primary text */
+    --slate-soft:  #E8E7DE;
+    --gray-950:    #F0EFE6;
+    --gray-800:    #D4D3CA;
+    --gray-700:    #B0AFA6;
+    --gray-500:    #8A8980;
+    --gray-400:    #6E6E6E;
+    --gray-300:    #56565A;
+    --gray-200:    #3A3A3D;
+    --gray-150:    #2F2F33;
+    --gray-100:    #2A2A2D;
+    --gray-075:    #222225;
+    --gray-050:    #1C1C1F;
+    --clay:        #D4A94C;   /* antique gold accent */
+    --clay-deep:   #E6BE62;
+    --clay-soft:   rgba(212,169,76,0.15);
+    --clay-tint:   rgba(212,169,76,0.10);
+
+    --border-hair:   rgba(240,239,230,0.10);
+    --border-light:  rgba(240,239,230,0.06);
+    --border-strong: rgba(240,239,230,0.20);
+
+    --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --serif: 'Source Serif 4', Georgia, serif;
-    --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --mono: 'JetBrains Mono', monospace;
-    --max-width: 720px;
-    --max-width-wide: 1040px;
+    --mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+    --maxw: 1200px;
+    --gutter: 40px;
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    font-family: var(--sans); font-size: 16px; line-height: 1.65;
-    color: var(--fg); background: var(--bg);
-    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 430;
+    line-height: 1.55;
+    color: var(--slate);
+    background: var(--ivory);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01" on, "ss03" on, "ss08" on;
     overflow-x: hidden;
   }
 
-  ::selection { background: rgba(217,119,87,0.35); }
+  ::selection { background: var(--clay); color: var(--ivory); }
 
-  /* ── NAV ── */
-  nav {
+  /* ────── NAV ────── */
+  nav.site-nav {
     position: sticky; top: 0; z-index: 100;
     background: rgba(13,13,15,0.82);
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
+    backdrop-filter: saturate(140%) blur(16px);
+    -webkit-backdrop-filter: saturate(140%) blur(16px);
+    border-bottom: 0.5px solid var(--border-hair);
   }
   .nav-inner {
-    max-width: var(--max-width-wide); margin: 0 auto; padding: 0 32px;
-    height: 56px; display: flex; align-items: center; justify-content: space-between;
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 0 var(--gutter); height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
   }
-  .nav-name {
-    font-family: var(--serif); font-weight: 600; font-size: 18px;
-    color: var(--fg); text-decoration: none; letter-spacing: -0.3px;
+  .nav-brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--serif); font-weight: 500; font-size: 18px;
+    color: var(--slate); text-decoration: none;
+    letter-spacing: -0.01em;
   }
-  .nav-links { display: flex; gap: 20px; align-items: center; }
+  .nav-brand .spark {
+    width: 10px; height: 10px; display: inline-block;
+    border-radius: 50%; background: var(--clay);
+    box-shadow: 0 0 0 3px rgba(212,169,76,0.22);
+  }
+  .nav-links { display: flex; gap: 4px; align-items: center; }
   .nav-links a {
-    font-size: 13px; font-weight: 500; color: var(--fg-secondary);
-    text-decoration: none; transition: color 0.2s; letter-spacing: 0.01em;
+    font-size: 13.5px; font-weight: 500;
+    color: var(--gray-700); text-decoration: none;
+    padding: 8px 14px; border-radius: 6px;
+    transition: color .15s, background .15s;
+    white-space: nowrap;
   }
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover { color: var(--slate); background: rgba(255,255,255,0.05); }
   .nav-cta {
-    font-size: 13px !important; font-weight: 600 !important;
-    color: var(--bg) !important; background: var(--accent);
-    padding: 7px 18px; border-radius: 6px; transition: background 0.2s;
+    margin-left: 8px;
+    background: var(--clay) !important; color: #15130F !important;
+    padding: 9px 18px !important;
+    border-radius: 9999px !important;
+    font-weight: 600 !important;
   }
-  .nav-cta:hover { background: var(--accent-hover) !important; }
+  .nav-cta:hover { background: var(--clay-deep) !important; color: #15130F !important; }
 
-  /* ── HERO ── */
+  /* ────── HERO ────── */
   .hero {
-    max-width: var(--max-width-wide); margin: 0 auto;
-    padding: 100px 32px 80px;
-    border-bottom: 1px solid var(--border);
-    min-height: 70vh; display: flex; flex-direction: column; justify-content: center;
+    position: relative;
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 72px var(--gutter) 96px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) 320px;
+    gap: 72px;
+    align-items: end;
   }
   .hero-eyebrow {
-    font-family: var(--mono); font-size: 13px; font-weight: 500;
-    color: var(--accent); letter-spacing: 0.06em; margin-bottom: 20px;
-    text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--clay); letter-spacing: 0.04em;
+    text-transform: uppercase; margin-bottom: 28px;
+  }
+  .hero-eyebrow::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--clay);
+    box-shadow: 0 0 0 3px rgba(212,169,76,0.2);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(212,169,76,0.2); }
+    50% { box-shadow: 0 0 0 6px rgba(212,169,76,0.0); }
   }
   .hero h1 {
     font-family: var(--serif);
-    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
-    font-weight: 700; line-height: 1.18; color: var(--fg);
-    letter-spacing: -0.02em; margin-bottom: 28px; max-width: 760px;
+    font-size: clamp(42px, 6.2vw, 88px);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 72;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--slate);
+    margin-bottom: 36px;
   }
-  .hero h1 .accent-word { color: var(--accent); }
-  .hero-sub {
-    font-size: 17px; line-height: 1.75; color: var(--fg-secondary);
-    max-width: 620px; margin-bottom: 44px;
+  .hero h1 em {
+    font-style: italic; font-weight: 400;
+    color: var(--clay);
   }
-  .hero-meta {
-    display: flex; flex-wrap: wrap; gap: 20px;
-    font-size: 14px; color: var(--fg-tertiary);
+  .hero-lede {
+    font-family: var(--serif);
+    font-size: 21px; line-height: 1.55;
+    color: var(--gray-800);
+    font-weight: 400;
+    max-width: 640px;
+    margin-bottom: 40px;
   }
-  .hero-meta span { display: flex; align-items: center; gap: 6px; }
-  .hero-meta svg {
-    width: 15px; height: 15px; stroke: var(--accent); fill: none; stroke-width: 1.8;
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px; border-radius: 9999px;
+    font-size: 14.5px; font-weight: 500;
+    text-decoration: none;
+    transition: all .15s ease;
+    border: 0.5px solid transparent;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--clay); color: #15130F;
+  }
+  .btn-primary:hover { background: var(--clay-deep); }
+  .btn-secondary {
+    background: transparent; color: var(--slate);
+    border-color: var(--border-strong);
+  }
+  .btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: var(--slate); }
+  .btn svg { width: 15px; height: 15px; }
+
+  .hero-side {
+    padding: 28px; border: 0.5px solid var(--border-hair);
+    background: var(--ivory-deep); border-radius: 16px;
+    font-size: 13.5px;
+  }
+  .hero-side-label {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--clay); letter-spacing: 0.05em;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .hero-side-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 8px 0;
+    color: var(--gray-800);
+  }
+  .hero-side-row + .hero-side-row { border-top: 0.5px solid var(--border-hair); }
+  .hero-side-row .label {
+    color: var(--gray-500); min-width: 70px; font-size: 12.5px;
+  }
+  .hero-side-row .val { color: var(--slate); font-weight: 500; }
+  .hero-side-row a { color: var(--slate); text-decoration: none; border-bottom: 0.5px solid var(--border-strong); }
+  .hero-side-row a:hover { color: var(--clay); border-color: var(--clay); }
+
+  /* Status ticker under hero */
+  .hero-ticker {
+    margin-top: 72px; padding: 18px 24px;
+    border-top: 0.5px solid var(--border-hair);
+    border-bottom: 0.5px solid var(--border-hair);
+    display: flex; flex-wrap: wrap; gap: 48px;
+    font-family: var(--mono); font-size: 12px; color: var(--gray-500);
+    letter-spacing: 0.03em; text-transform: uppercase;
+  }
+  .hero-ticker strong {
+    color: var(--slate); font-weight: 500; font-family: var(--serif);
+    font-size: 15px; text-transform: none; letter-spacing: 0;
+    margin-right: 10px;
   }
 
-  /* ── REVEAL ANIMATIONS ── */
-  .reveal-line {
+  /* ────── SECTION FRAME ────── */
+  section {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .section-inner { padding: 88px 0; border-top: 0.5px solid var(--border-hair); }
+
+  .section-label {
+    display: flex; align-items: center; gap: 12px;
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--clay); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 18px;
+  }
+  .section-label::before {
+    content: ""; width: 20px; height: 1px; background: var(--clay);
+  }
+  .section-head {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    align-items: end; margin-bottom: 56px;
+  }
+  .section-title {
+    font-family: var(--serif); font-size: clamp(32px, 3.8vw, 48px);
+    font-weight: 400; font-variation-settings: 'opsz' 48;
+    line-height: 1.05; letter-spacing: -0.02em;
+    color: var(--slate);
+    max-width: 12ch;
+  }
+  .section-title em { font-style: italic; color: var(--clay); }
+  .section-blurb {
+    font-size: 16px; line-height: 1.65; color: var(--gray-700);
+    max-width: 48ch;
+  }
+
+  /* ────── ABOUT / PULL-QUOTE ────── */
+  .pullquote {
+    display: grid; grid-template-columns: 80px 1fr; gap: 32px;
+    padding: 48px 0;
+    border-top: 0.5px solid var(--border-hair);
+    border-bottom: 0.5px solid var(--border-hair);
+    margin-bottom: 48px;
+  }
+  .pullquote-mark {
+    font-family: var(--serif); font-size: 110px;
+    color: var(--clay); line-height: 0.7;
+    font-style: italic; font-weight: 400;
+  }
+  .pullquote-text {
+    font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px);
+    line-height: 1.25; font-weight: 400;
+    color: var(--slate);
+    letter-spacing: -0.015em;
+  }
+  .pullquote-text em { color: var(--clay); font-style: italic; }
+  .about-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+  }
+  .about-grid p {
+    font-size: 16px; line-height: 1.7;
+    color: var(--gray-800);
+    text-wrap: pretty;
+  }
+
+  /* ────── METRICS STRIP ────── */
+  .metrics {
+    display: grid; grid-template-columns: repeat(6, 1fr);
+    border-top: 0.5px solid var(--border-hair);
+    border-bottom: 0.5px solid var(--border-hair);
+    margin-top: 8px;
+  }
+  .metric {
+    padding: 32px 24px;
+    border-right: 0.5px solid var(--border-hair);
+    position: relative;
+  }
+  .metric:last-child { border-right: none; }
+  .metric-value {
+    font-family: var(--serif); font-size: 42px;
+    font-variation-settings: 'opsz' 48;
+    font-weight: 400; color: var(--slate);
+    line-height: 1; letter-spacing: -0.03em;
+    margin-bottom: 10px;
+  }
+  .metric-value .unit { color: var(--clay); font-style: italic; }
+  .metric-label {
+    font-size: 13px; color: var(--gray-700); line-height: 1.45;
+  }
+  .metric-kicker {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--gray-500); letter-spacing: 0.06em;
+    text-transform: uppercase; margin-bottom: 12px;
+  }
+
+  /* ────── TIMELINE ────── */
+  .timeline { display: block; }
+  .company-block { margin-bottom: 56px; }
+  .company-block:last-child { margin-bottom: 0; }
+  .company-meta {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap;
+    padding-bottom: 20px; margin-bottom: 20px;
+    border-bottom: 0.5px solid var(--border-hair);
+  }
+  .company-meta-left { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+  .company-name {
+    font-family: var(--serif); font-size: 32px;
+    font-weight: 400; letter-spacing: -0.015em;
+    color: var(--slate); line-height: 1.1;
+  }
+  .company-sub {
+    font-size: 14px; color: var(--gray-700);
+  }
+  .company-dates {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--gray-500); letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .role-card {
+    background: var(--ivory-deep);
+    border: 0.5px solid var(--border-hair);
+    border-radius: 14px;
+    margin-bottom: 14px;
+    transition: all .2s ease;
     overflow: hidden;
   }
-  .reveal-line > span {
-    display: inline-block;
-    transform: translateY(110%);
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  .role-card:hover { border-color: var(--border-strong); }
+  .role-card.active {
+    background: var(--gray-075);
+    border-color: var(--clay);
+    box-shadow: 0 8px 32px rgba(212,169,76,0.12), 0 0 0 1px rgba(212,169,76,0.14);
   }
-  .reveal-line.visible > span {
-    transform: translateY(0);
+  .role-head {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 24px; cursor: pointer; gap: 16px;
+    user-select: none;
+  }
+  .role-head-left { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .role-badge {
+    font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+    color: var(--clay); background: var(--clay-tint);
+    padding: 4px 10px; border-radius: 4px;
+    letter-spacing: 0.04em; text-transform: uppercase;
+    white-space: nowrap;
+    border: 0.5px solid rgba(212,169,76,0.2);
+  }
+  .role-title {
+    font-family: var(--serif);
+    font-size: 17px; font-weight: 500; color: var(--slate);
+    letter-spacing: -0.01em;
+  }
+  .role-dates {
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--gray-500); letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+  .role-chev {
+    width: 18px; height: 18px; flex-shrink: 0;
+    stroke: var(--gray-500); fill: none; stroke-width: 1.8;
+    transition: transform .3s;
+  }
+  .role-card.active .role-chev { transform: rotate(180deg); stroke: var(--clay); }
+  .role-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+  .role-card.active .role-body { max-height: 2400px; }
+  .role-inner {
+    padding: 0 24px 28px;
+    border-top: 0.5px solid var(--border-hair);
+    padding-top: 20px;
+  }
+  .role-inner ul { list-style: none; padding: 0; }
+  .role-inner li {
+    font-size: 14.5px; line-height: 1.65;
+    color: var(--gray-800); padding: 6px 0 6px 22px;
+    position: relative;
+  }
+  .role-inner li + li { border-top: 0.5px solid var(--border-light); margin-top: 2px; padding-top: 10px; }
+  .role-inner li::before {
+    content: "→"; position: absolute; left: 0; top: 6px;
+    font-family: var(--mono); font-size: 13px;
+    color: var(--clay); font-weight: 500;
+  }
+  .role-inner li + li::before { top: 10px; }
+
+  .callout {
+    background: var(--clay-tint);
+    border: 0.5px solid rgba(212,169,76,0.25);
+    border-radius: 10px;
+    padding: 18px 20px; margin-top: 18px;
+  }
+  .callout-label {
+    font-family: var(--mono); font-size: 10.5px; font-weight: 500;
+    color: var(--clay); letter-spacing: 0.06em;
+    text-transform: uppercase; margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .callout-label::before {
+    content: ""; width: 14px; height: 1px; background: var(--clay);
+  }
+  .callout p { font-size: 14px; line-height: 1.55; color: var(--gray-700); }
+
+  /* ────── AI SECTION ────── */
+  .ai-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 900px) { .ai-wrap { grid-template-columns: 1fr; } }
+
+  .ai-tools {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+    align-content: start;
+  }
+  .ai-chip {
+    background: var(--ivory-deep);
+    border: 0.5px solid var(--border-hair);
+    border-radius: 12px; padding: 16px 18px;
+    cursor: pointer; transition: all .2s;
+    display: flex; flex-direction: column; gap: 4px;
+    text-align: left;
+  }
+  .ai-chip:hover { background: var(--gray-075); border-color: var(--border-strong); transform: translateY(-1px); }
+  .ai-chip.active {
+    background: var(--clay); border-color: var(--clay);
+  }
+  .ai-chip.active .ai-chip-name { color: #15130F; }
+  .ai-chip.active .ai-chip-type { color: rgba(21,19,15,0.65); }
+  .ai-chip-name {
+    font-size: 14.5px; font-weight: 500; color: var(--slate);
+    font-family: var(--serif); letter-spacing: -0.01em;
+  }
+  .ai-chip-type {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--gray-500); letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
+  .ai-panel {
+    background: linear-gradient(160deg, #1C1C1F 0%, #141416 100%);
+    color: var(--slate);
+    border: 0.5px solid var(--border-hair);
+    border-radius: 16px; padding: 32px;
+    min-height: 340px; position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .ai-panel::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url('assets/Topo.svg');
+    background-size: 600px;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+  .ai-panel-inner { position: relative; z-index: 1; }
+  .ai-panel-kicker {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--clay); letter-spacing: 0.06em;
+    text-transform: uppercase; margin-bottom: 14px;
+  }
+  .ai-panel-title {
+    font-family: var(--serif); font-size: 30px;
+    font-weight: 400; letter-spacing: -0.02em;
+    color: var(--slate); margin-bottom: 16px;
+    line-height: 1.1;
+  }
+  .ai-panel-text {
+    font-family: var(--serif); font-size: 16px;
+    line-height: 1.6; color: var(--gray-700);
+    font-weight: 400;
+  }
+  .ai-panel-hint {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gray-400); letter-spacing: 0.05em;
+    text-transform: uppercase; margin-top: auto; padding-top: 24px;
+  }
+
+  .workflows-title {
+    font-family: var(--serif); font-size: 22px;
+    font-weight: 500; color: var(--slate);
+    margin-top: 56px; margin-bottom: 20px;
+    letter-spacing: -0.015em;
+  }
+  .workflow-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 0.5px solid var(--border-hair);
+    border-left: 0.5px solid var(--border-hair);
+  }
+  .workflow-card {
+    padding: 28px;
+    border-right: 0.5px solid var(--border-hair);
+    border-bottom: 0.5px solid var(--border-hair);
+    transition: background .2s;
+    background: transparent;
+  }
+  .workflow-card:hover { background: var(--gray-075); }
+  .workflow-num {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--clay); letter-spacing: 0.06em;
+    text-transform: uppercase; margin-bottom: 10px;
+  }
+  .workflow-card h4 {
+    font-family: var(--serif); font-size: 18px;
+    font-weight: 500; color: var(--slate);
+    margin-bottom: 8px; letter-spacing: -0.01em;
+  }
+  .workflow-card p {
+    font-size: 14px; line-height: 1.6; color: var(--gray-700);
+    text-wrap: pretty;
+  }
+
+  /* ────── EXPERTISE ────── */
+  .expertise-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 0.5px solid var(--border-hair);
+    border-left: 0.5px solid var(--border-hair);
+  }
+  .exp-card {
+    padding: 32px 28px;
+    border-right: 0.5px solid var(--border-hair);
+    border-bottom: 0.5px solid var(--border-hair);
+  }
+  .exp-label {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--clay); letter-spacing: 0.06em;
+    text-transform: uppercase; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .exp-label::after {
+    content: ""; flex: 1; height: 0.5px; background: var(--border-hair);
+  }
+  .exp-card h3 {
+    font-family: var(--serif); font-size: 20px;
+    font-weight: 500; color: var(--slate);
+    letter-spacing: -0.015em; margin-bottom: 12px;
+  }
+  .exp-card p {
+    font-size: 14px; line-height: 1.6;
+    color: var(--gray-700); text-wrap: pretty;
+  }
+
+  /* ────── EDUCATION ────── */
+  .edu-list {
+    border-top: 0.5px solid var(--border-hair);
+  }
+  .edu-row {
+    display: grid; grid-template-columns: 100px 1fr auto;
+    gap: 40px; align-items: baseline;
+    padding: 24px 0;
+    border-bottom: 0.5px solid var(--border-hair);
+    transition: padding .2s;
+  }
+  .edu-row:hover { padding-left: 12px; }
+  .edu-year {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--clay); letter-spacing: 0.04em;
+  }
+  .edu-main h3 {
+    font-family: var(--serif); font-size: 20px;
+    font-weight: 500; color: var(--slate);
+    margin-bottom: 4px; letter-spacing: -0.015em;
+  }
+  .edu-main p {
+    font-size: 14px; color: var(--gray-700);
+  }
+  .edu-badge {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--gray-700); letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 0.5px solid var(--border-strong);
+    padding: 4px 10px; border-radius: 9999px;
+  }
+  .edu-badge.active { color: var(--clay); border-color: var(--clay); }
+
+  /* ────── LIFE · HORIZONTAL ────── */
+  .life-track-wrap {
+    position: relative;
+    margin: 0 calc(var(--gutter) * -1);
+    overflow: hidden;
+  }
+  .life-track {
+    display: flex; gap: 16px;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    padding: 4px var(--gutter) 20px;
+    scrollbar-width: none;
+  }
+  .life-track::-webkit-scrollbar { display: none; }
+  .life-card {
+    flex: 0 0 300px; scroll-snap-align: start;
+    background: var(--ivory-deep);
+    border: 0.5px solid var(--border-hair);
+    border-radius: 16px; padding: 28px;
+    transition: all .25s;
+    position: relative;
+  }
+  .life-card:hover {
+    background: var(--gray-075);
+    border-color: var(--clay);
+    transform: translateY(-3px);
+  }
+  .life-num {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--clay); letter-spacing: 0.06em;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .life-icon {
+    width: 44px; height: 44px; margin-bottom: 18px;
+    stroke: var(--slate); fill: none; stroke-width: 1.3;
+    stroke-linecap: round; stroke-linejoin: round;
+  }
+  .life-card:hover .life-icon { stroke: var(--clay); }
+  .life-card h3 {
+    font-family: var(--serif); font-size: 22px;
+    font-weight: 500; color: var(--slate);
+    margin-bottom: 10px; letter-spacing: -0.015em;
+  }
+  .life-card p {
+    font-size: 14px; line-height: 1.55; color: var(--gray-700);
+    text-wrap: pretty;
+  }
+
+  /* ────── CTA / FOOTER ────── */
+  .final-cta {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .cta-box {
+    background: linear-gradient(160deg, #1C1C1F 0%, #141416 100%);
+    color: var(--slate);
+    border: 0.5px solid var(--border-hair);
+    border-radius: 28px; padding: 80px 64px;
+    position: relative; overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .cta-box::before {
+    content: "";
+    position: absolute; top: -80px; right: -80px;
+    width: 460px; height: 460px; border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(212,169,76,0.30), rgba(212,169,76,0) 65%);
+    pointer-events: none;
+  }
+  .cta-box::after {
+    content: "";
+    position: absolute; bottom: -120px; left: -60px;
+    width: 300px; height: 300px; border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(212,169,76,0.10), rgba(212,169,76,0) 70%);
+    pointer-events: none;
+  }
+  .cta-inner { position: relative; z-index: 1; max-width: 640px; }
+  .cta-kicker {
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--clay); letter-spacing: 0.06em;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .cta-title {
+    font-family: var(--serif); font-size: clamp(36px, 4.5vw, 56px);
+    font-weight: 400; line-height: 1.05; letter-spacing: -0.025em;
+    margin-bottom: 24px; color: var(--slate);
+  }
+  .cta-title em { color: var(--clay); font-style: italic; }
+  .cta-sub {
+    font-family: var(--serif); font-size: 18px; line-height: 1.5;
+    color: var(--gray-700); margin-bottom: 36px;
+    max-width: 520px;
+  }
+  .cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .cta-box .btn-primary {
+    background: var(--clay); color: #15130F;
+  }
+  .cta-box .btn-primary:hover { background: var(--clay-deep); }
+  .cta-box .btn-secondary {
+    background: transparent; color: var(--slate);
+    border-color: var(--border-strong);
+  }
+  .cta-box .btn-secondary:hover { background: rgba(255,255,255,0.06); border-color: var(--slate); }
+
+  footer.site-foot {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 32px var(--gutter) 48px;
+    border-top: 0.5px solid var(--border-hair);
+    display: flex; justify-content: space-between;
+    align-items: center; flex-wrap: wrap; gap: 16px;
+  }
+  .foot-text {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--gray-500); letter-spacing: 0.04em;
+  }
+  .foot-links { display: flex; gap: 20px; }
+  .foot-links a {
+    font-size: 13px; color: var(--gray-700);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .foot-links a:hover { color: var(--clay); }
+
+  /* ────── REVEAL ANIMATIONS ────── */
   .fade-up {
-    opacity: 0; transform: translateY(24px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .7s ease, transform .7s ease;
   }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-  .stagger-children > * {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+  .reveal-mask { overflow: hidden; display: block; }
+  .reveal-mask > * {
+    display: block;
+    transform: translateY(110%);
+    transition: transform .9s cubic-bezier(0.22,1,0.36,1);
   }
-  .stagger-children.visible > * { opacity: 1; transform: translateY(0); }
-  .stagger-children.visible > *:nth-child(1) { transition-delay: 0.0s; }
-  .stagger-children.visible > *:nth-child(2) { transition-delay: 0.08s; }
-  .stagger-children.visible > *:nth-child(3) { transition-delay: 0.16s; }
-  .stagger-children.visible > *:nth-child(4) { transition-delay: 0.24s; }
-  .stagger-children.visible > *:nth-child(5) { transition-delay: 0.32s; }
-  .stagger-children.visible > *:nth-child(6) { transition-delay: 0.40s; }
-  .stagger-children.visible > *:nth-child(7) { transition-delay: 0.48s; }
-  .stagger-children.visible > *:nth-child(8) { transition-delay: 0.56s; }
+  .reveal-mask.visible > * { transform: translateY(0); }
 
-  /* ── SECTION ── */
-  section {
-    max-width: var(--max-width-wide); margin: 0 auto; padding: 0 32px;
+  .stagger > * {
+    opacity: 0; transform: translateY(16px);
+    transition: opacity .5s ease, transform .5s ease;
   }
-  .section-header {
-    display: flex; align-items: baseline; gap: 12px;
-    margin-bottom: 36px; padding-top: 72px;
-  }
-  .section-number {
-    font-family: var(--mono); font-size: 13px; font-weight: 500;
-    color: var(--accent); letter-spacing: 0.04em;
-  }
-  .section-title {
-    font-family: var(--serif); font-size: 28px; font-weight: 600;
-    color: var(--fg); letter-spacing: -0.02em;
-  }
-  .section-divider {
-    max-width: var(--max-width-wide); margin: 0 auto; padding: 0 32px;
-  }
-  .section-divider hr { border: none; border-top: 1px solid var(--border); }
+  .stagger.visible > * { opacity: 1; transform: translateY(0); }
+  .stagger.visible > *:nth-child(1) { transition-delay: 0s; }
+  .stagger.visible > *:nth-child(2) { transition-delay: .06s; }
+  .stagger.visible > *:nth-child(3) { transition-delay: .12s; }
+  .stagger.visible > *:nth-child(4) { transition-delay: .18s; }
+  .stagger.visible > *:nth-child(5) { transition-delay: .24s; }
+  .stagger.visible > *:nth-child(6) { transition-delay: .30s; }
+  .stagger.visible > *:nth-child(7) { transition-delay: .36s; }
+  .stagger.visible > *:nth-child(8) { transition-delay: .42s; }
 
-  /* ── ABOUT / PHILOSOPHY ── */
-  .about-content {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
-    padding-bottom: 56px; align-items: start;
+  /* ────── RESPONSIVE ────── */
+  @media (max-width: 960px) {
+    :root { --gutter: 24px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero-side { max-width: 360px; }
+    .section-head { grid-template-columns: 1fr; gap: 20px; }
+    .about-grid { grid-template-columns: 1fr; gap: 24px; }
+    .metrics { grid-template-columns: repeat(3, 1fr); }
+    .metric:nth-child(3) { border-right: none; }
+    .metric:nth-child(-n+3) { border-bottom: 0.5px solid var(--border-hair); }
+    .timeline { display: block; }
+    .company-meta { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .company-meta-left { gap: 10px; }
+    .company-name { font-size: 26px; }
+    .workflow-grid, .expertise-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta-box { padding: 56px 32px; }
   }
-  .about-quote {
-    font-family: var(--serif); font-size: 22px; font-weight: 600;
-    line-height: 1.45; color: var(--fg);
-    border-left: 3px solid var(--accent); padding-left: 24px;
-  }
-  .about-text {
-    font-size: 15px; line-height: 1.75; color: var(--fg-secondary);
-  }
-  .about-text p + p { margin-top: 16px; }
-
-  /* ── HIGHLIGHT CARDS ── */
-  .highlights-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px; padding-bottom: 56px;
-  }
-  .highlight-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 24px;
-    transition: border-color 0.3s, background 0.3s; cursor: default;
-  }
-  .highlight-card:hover {
-    border-color: var(--accent); background: var(--bg-card-hover);
-  }
-  .highlight-number {
-    font-family: var(--serif); font-size: 30px; font-weight: 700;
-    color: var(--accent); line-height: 1; margin-bottom: 10px;
-  }
-  .highlight-card h3 {
-    font-size: 14px; font-weight: 600; color: var(--fg); margin-bottom: 6px;
-  }
-  .highlight-card p {
-    font-size: 13px; line-height: 1.6; color: var(--fg-secondary);
+  @media (max-width: 640px) {
+    .hero { padding: 48px var(--gutter) 64px; }
+    .section-inner { padding: 64px 0; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .metric { padding: 24px 16px; }
+    .metric-value { font-size: 34px; }
+    .workflow-grid, .expertise-grid { grid-template-columns: 1fr; }
+    .pullquote { grid-template-columns: 1fr; gap: 16px; }
+    .pullquote-mark { font-size: 70px; }
+    .edu-row { grid-template-columns: 70px 1fr; }
+    .edu-badge { grid-column: 1 / -1; justify-self: start; margin-top: 4px; }
+    .role-head { flex-direction: column; align-items: flex-start; }
+    .role-head-left { width: 100%; }
+    .hero-ticker { gap: 20px; }
+    .cta-box { padding: 40px 24px; border-radius: 20px; }
   }
 
-  /* ── CAREER TIMELINE ── */
-  .timeline { position: relative; padding-bottom: 48px; }
-  .timeline-company { margin-bottom: 40px; }
-  .company-header {
-    display: flex; justify-content: space-between; align-items: baseline;
-    flex-wrap: wrap; gap: 8px; margin-bottom: 8px;
+  /* ────── HERO DECORATION ────── */
+  .hero { position: relative; overflow: hidden; }
+  .hero > .hero-grid, .hero > .hero-ticker { position: relative; z-index: 2; }
+  .hero-decor {
+    position: absolute; top: 0; right: 0;
+    width: 65%; height: 120%;
+    opacity: 0.9;
+    pointer-events: none; z-index: 1;
+    mask-image: radial-gradient(ellipse at 80% 30%, black 10%, transparent 65%);
+    -webkit-mask-image: radial-gradient(ellipse at 80% 30%, black 10%, transparent 65%);
   }
-  .company-name {
-    font-size: 20px; font-weight: 700; color: var(--fg); font-family: var(--serif);
+  .hero-decor svg { width: 100%; height: 100%; display: block; }
+  .hero-decor .dot-active { fill: var(--clay); }
+  .hero-decor .line-live {
+    stroke: var(--clay); stroke-width: 0.8; fill: none;
+    stroke-dasharray: 400; stroke-dashoffset: 400;
+    animation: draw 3.2s ease-out 0.6s forwards;
   }
-  .company-dates { font-family: var(--mono); font-size: 13px; color: var(--fg-tertiary); }
-  .company-location { font-size: 14px; color: var(--accent); margin-bottom: 24px; }
-
-  .role-item {
-    border: 1px solid var(--border); border-radius: 10px;
-    margin-bottom: 12px; overflow: hidden; transition: border-color 0.3s;
+  .hero-decor .line-dim { stroke: rgba(240,239,230,0.12); stroke-width: 0.5; fill: none; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+  .hero-decor .pulse-ring {
+    transform-origin: center;
+    animation: ringPulse 3s ease-out infinite;
   }
-  .role-item:hover { border-color: rgba(217,119,87,0.3); }
-  .role-item.active { border-color: var(--accent); }
-
-  .role-header {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 18px 24px; cursor: pointer; background: var(--bg-card);
-    transition: background 0.2s; user-select: none;
-  }
-  .role-header:hover { background: var(--bg-card-hover); }
-  .role-item.active .role-header { background: var(--bg-card-hover); }
-
-  .role-left { display: flex; align-items: center; gap: 12px; }
-  .role-badge {
-    font-family: var(--mono); font-size: 11px; font-weight: 600;
-    color: var(--accent); background: var(--accent-soft);
-    padding: 3px 10px; border-radius: 4px; white-space: nowrap;
-  }
-  .role-title { font-size: 15px; font-weight: 600; color: var(--fg); }
-  .role-right { display: flex; align-items: center; gap: 12px; }
-  .role-dates-label { font-family: var(--mono); font-size: 12px; color: var(--fg-tertiary); }
-  .role-chevron {
-    width: 18px; height: 18px; stroke: var(--fg-tertiary); fill: none;
-    stroke-width: 2; transition: transform 0.3s;
-  }
-  .role-item.active .role-chevron { transform: rotate(180deg); }
-
-  .role-body { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-  .role-item.active .role-body { max-height: 2000px; }
-
-  .role-content { padding: 0 24px 24px; border-top: 1px solid var(--border); }
-  .role-content ul { list-style: none; padding: 0; margin-top: 16px; }
-  .role-content li {
-    font-size: 14px; line-height: 1.65; color: var(--fg-secondary);
-    padding: 5px 0 5px 20px; position: relative;
-  }
-  .role-content li::before {
-    content: ""; position: absolute; left: 2px; top: 13px;
-    width: 5px; height: 5px; border-radius: 50%;
-    background: var(--accent); opacity: 0.5;
+  @keyframes ringPulse {
+    0% { r: 3; opacity: 0.8; }
+    100% { r: 24; opacity: 0; }
   }
 
-  .callout-box {
-    background: var(--accent-glow); border: 1px solid rgba(217,119,87,0.15);
-    border-radius: 8px; padding: 16px 20px; margin-top: 16px;
+  /* ────── SHIFT SECTION · AI IMPACT ────── */
+  #shift .section-inner { position: relative; }
+  .shift-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border-top: 0.5px solid var(--border-hair);
+    border-bottom: 0.5px solid var(--border-hair);
+    margin-bottom: 80px;
   }
-  .callout-box .callout-label {
-    font-family: var(--mono); font-size: 11px; font-weight: 600;
-    color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em;
-    margin-bottom: 6px;
-  }
-  .callout-box p { font-size: 13px; line-height: 1.6; color: var(--fg-secondary); }
-
-  /* ── AI SECTION ── */
-  .ai-tools-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-    gap: 12px; margin-bottom: 32px;
-  }
-  .ai-tool-chip {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 8px; padding: 16px; text-align: center;
-    transition: border-color 0.3s, transform 0.2s, background 0.3s; cursor: pointer;
-  }
-  .ai-tool-chip:hover {
-    border-color: var(--accent); transform: translateY(-2px); background: var(--bg-card-hover);
-  }
-  .ai-tool-chip.active { border-color: var(--accent); background: var(--accent-soft); }
-  .ai-tool-name { font-size: 14px; font-weight: 600; color: var(--fg); margin-bottom: 2px; }
-  .ai-tool-type {
-    font-family: var(--mono); font-size: 10px; color: var(--fg-tertiary);
-    text-transform: uppercase; letter-spacing: 0.05em;
-  }
-
-  .ai-detail-panel {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 28px; min-height: 120px; margin-bottom: 32px;
-    transition: border-color 0.3s;
-  }
-  .ai-detail-panel.has-content { border-color: rgba(217,119,87,0.2); }
-  .ai-detail-title { font-size: 16px; font-weight: 600; color: var(--fg); margin-bottom: 8px; }
-  .ai-detail-text { font-size: 14px; line-height: 1.65; color: var(--fg-secondary); }
-  .ai-detail-placeholder { font-size: 14px; color: var(--fg-tertiary); font-style: italic; }
-
-  .workflows-header { font-size: 16px; font-weight: 600; color: var(--fg); margin-bottom: 16px; }
-  .workflow-cards {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px; padding-bottom: 48px;
-  }
-  .workflow-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 24px; transition: border-color 0.3s;
-  }
-  .workflow-card:hover { border-color: rgba(217,119,87,0.3); }
-  .workflow-card h4 { font-size: 14px; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
-  .workflow-card p { font-size: 13px; line-height: 1.6; color: var(--fg-secondary); }
-
-  /* ── SKILLS ── */
-  .skills-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px; padding-bottom: 48px;
-  }
-  .skill-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 24px; transition: border-color 0.3s, background 0.3s;
-  }
-  .skill-card:hover { border-color: var(--accent); background: var(--bg-card-hover); }
-  .skill-card-label {
-    font-family: var(--mono); font-size: 11px; font-weight: 500;
-    color: var(--accent); letter-spacing: 0.05em;
-    text-transform: uppercase; margin-bottom: 10px;
-  }
-  .skill-card p { font-size: 13px; line-height: 1.6; color: var(--fg-secondary); }
-
-  /* ── EDUCATION ── */
-  .edu-grid { display: grid; gap: 0; padding-bottom: 48px; }
-  .edu-item {
-    display: flex; justify-content: space-between; align-items: baseline;
-    flex-wrap: wrap; gap: 8px; padding: 18px 0; border-bottom: 1px solid var(--border);
-  }
-  .edu-item:last-child { border-bottom: none; }
-  .edu-degree { font-size: 15px; font-weight: 600; color: var(--fg); }
-  .edu-school { font-size: 13px; color: var(--fg-secondary); }
-  .edu-year { font-family: var(--mono); font-size: 12px; color: var(--fg-tertiary); }
-
-  /* ── BEYOND ACCOUNTING — HORIZONTAL SCROLL ── */
-  .horiz-section {
-    padding-top: 72px; padding-bottom: 64px;
-    max-width: var(--max-width-wide); margin: 0 auto; padding-left: 32px; padding-right: 32px;
-  }
-  .horiz-section .section-header { padding-top: 0; }
-  .horiz-intro {
-    font-size: 15px; line-height: 1.7; color: var(--fg-secondary);
-    max-width: 580px; margin-bottom: 36px;
-  }
-
-  .horiz-track-wrapper {
-    position: relative;
-    margin-left: -32px; margin-right: -32px;
+  .shift-stat {
+    padding: 44px 36px; position: relative;
+    border-right: 0.5px solid var(--border-hair);
     overflow: hidden;
   }
-  .horiz-track {
-    display: flex; gap: 20px;
-    overflow-x: auto; scroll-snap-type: x mandatory;
-    padding: 8px 32px 24px;
-    -ms-overflow-style: none; scrollbar-width: none;
+  .shift-stat:last-child { border-right: none; }
+  .shift-stat::before {
+    content: ""; position: absolute; top: 0; left: 0;
+    width: 0; height: 2px; background: var(--clay);
+    transition: width 1.4s cubic-bezier(.2,1,.3,1) 0.3s;
   }
-  .horiz-track::-webkit-scrollbar { display: none; }
-
-  .horiz-card {
-    flex: 0 0 280px; scroll-snap-align: start;
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 12px; padding: 28px; position: relative;
-    transition: border-color 0.3s, transform 0.3s;
-    overflow: hidden;
+  .shift-stat.visible::before { width: 100%; }
+  .shift-stat-line {
+    display: flex; align-items: baseline; gap: 2px;
+    font-family: var(--serif);
+    color: var(--clay);
+    line-height: 0.95;
+    letter-spacing: -0.035em;
+    font-variation-settings: 'opsz' 72;
   }
-  .horiz-card:hover {
-    border-color: var(--accent); transform: translateY(-4px);
+  .shift-stat-num {
+    font-size: clamp(56px, 7vw, 88px);
+    font-weight: 400;
+    font-feature-settings: "tnum" 1, "lnum" 1;
   }
-  .horiz-card-emoji {
-    font-size: 36px; margin-bottom: 16px; display: block;
-    filter: grayscale(0.3);
+  .shift-stat-unit {
+    font-size: clamp(36px, 4.5vw, 52px);
+    font-style: italic;
   }
-  .horiz-card h3 {
-    font-size: 16px; font-weight: 600; color: var(--fg); margin-bottom: 8px;
+  .shift-stat-label {
+    font-family: var(--serif);
+    font-size: 16.5px; line-height: 1.5;
+    color: var(--slate);
+    margin-top: 20px;
+    max-width: 28ch;
+    text-wrap: pretty;
+    font-weight: 400;
   }
-  .horiz-card p {
-    font-size: 13px; line-height: 1.6; color: var(--fg-secondary);
-  }
-  .horiz-card .card-accent-line {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 3px; background: var(--accent); opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .horiz-card:hover .card-accent-line { opacity: 1; }
-
-  .scroll-hint {
+  .shift-stat-source {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--gray-500); letter-spacing: 0.05em;
+    text-transform: uppercase; margin-top: 18px;
     display: flex; align-items: center; gap: 8px;
-    font-family: var(--mono); font-size: 11px; color: var(--fg-tertiary);
-    letter-spacing: 0.04em; margin-top: 16px;
+  }
+  .shift-stat-source::before {
+    content: ""; width: 12px; height: 1px; background: var(--gray-300);
+  }
+
+  .shift-sub {
+    font-family: var(--serif); font-size: 26px;
+    font-weight: 500; color: var(--slate);
+    margin-bottom: 10px; letter-spacing: -0.018em;
+    font-variation-settings: 'opsz' 32;
+  }
+  .shift-sub em { color: var(--clay); font-style: italic; }
+  .shift-sub-note {
+    font-size: 14.5px; line-height: 1.6;
+    color: var(--gray-700); max-width: 62ch;
+    margin-bottom: 28px;
+  }
+
+  /* Horizontal bar chart */
+  .chart {
+    padding: 36px 40px 32px;
+    background: var(--ivory-deep);
+    border: 0.5px solid var(--border-hair);
+    border-radius: 18px;
+    margin-bottom: 88px;
+    position: relative;
+  }
+  .chart-rows { display: flex; flex-direction: column; gap: 22px; }
+  .chart-row { display: grid; grid-template-columns: 210px 1fr; gap: 24px; align-items: center; }
+  .chart-label {
+    font-family: var(--serif); font-size: 14.5px;
+    color: var(--slate); font-weight: 500;
+    letter-spacing: -0.01em; line-height: 1.25;
+  }
+  .chart-track {
+    position: relative; height: 30px;
+    background: rgba(240,239,230,0.025);
+    border-radius: 5px;
+    overflow: visible;
+  }
+  .chart-fill-old, .chart-fill-new {
+    position: absolute; top: 0; left: 0; height: 100%;
+    border-radius: 5px;
+    width: 0;
+    transition: width 1.3s cubic-bezier(.3,1,.4,1);
+  }
+  .chart-fill-old {
+    background: repeating-linear-gradient(-45deg,
+      rgba(240,239,230,0.14) 0 6px,
+      rgba(240,239,230,0.03) 6px 12px);
+    z-index: 1;
+  }
+  .chart-fill-new {
+    background: linear-gradient(90deg, rgba(212,169,76,0.6), var(--clay));
+    z-index: 2;
+    transition-delay: 0.25s;
+    box-shadow: 0 0 28px rgba(212,169,76,0.28);
+  }
+  .chart-pct {
+    position: absolute; left: calc(100% + 10px); top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--clay); font-weight: 500; letter-spacing: 0.04em;
+    white-space: nowrap;
+    opacity: 0; transition: opacity .4s ease 1.2s;
+  }
+  .chart.visible .chart-pct { opacity: 1; }
+  .chart-legend {
+    display: flex; gap: 32px; margin-top: 26px;
+    padding-top: 20px;
+    border-top: 0.5px solid var(--border-hair);
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--gray-500); letter-spacing: 0.06em;
+    text-transform: uppercase; flex-wrap: wrap;
+  }
+  .chart-legend-item { display: flex; align-items: center; gap: 10px; }
+  .chart-legend-swatch { width: 22px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+  .chart-legend-swatch.old {
+    background: repeating-linear-gradient(-45deg,
+      rgba(240,239,230,0.3) 0 3px, transparent 3px 6px);
+  }
+  .chart-legend-swatch.new {
+    background: linear-gradient(90deg, rgba(212,169,76,0.6), var(--clay));
+  }
+
+  /* Split diagram — replaced vs owned */
+  .shift-split {
+    display: grid; grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--border-hair);
+    border-bottom: 0.5px solid var(--border-hair);
+    padding: 56px 0;
+    margin-bottom: 88px;
+  }
+  .split-col { padding: 0 40px; }
+  .split-divider {
+    background: linear-gradient(to bottom,
+      transparent, var(--border-strong) 15%,
+      var(--border-strong) 85%, transparent);
+  }
+  .split-kicker {
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .split-kicker::before {
+    content: ""; width: 20px; height: 1px;
+  }
+  .split-replaced .split-kicker { color: var(--gray-500); }
+  .split-replaced .split-kicker::before { background: var(--gray-400); }
+  .split-owned .split-kicker { color: var(--clay); }
+  .split-owned .split-kicker::before { background: var(--clay); }
+  .split-col h3 {
+    font-family: var(--serif); font-size: clamp(26px, 3vw, 34px);
+    font-weight: 400; letter-spacing: -0.02em;
+    color: var(--slate); margin-bottom: 28px;
+    line-height: 1.1;
+    font-variation-settings: 'opsz' 32;
+  }
+  .split-col h3 em { color: var(--clay); font-style: italic; }
+  .split-col ul { list-style: none; padding: 0; }
+  .split-col li {
+    font-size: 15px; line-height: 1.5;
+    padding: 13px 0 13px 28px;
+    border-bottom: 0.5px solid var(--border-light);
+    position: relative;
+  }
+  .split-col li:last-child { border-bottom: none; }
+  .split-replaced li {
+    color: var(--gray-500);
+    text-decoration: line-through;
+    text-decoration-color: rgba(240,239,230,0.15);
+    text-decoration-thickness: 0.5px;
+  }
+  .split-replaced li::before {
+    content: ""; position: absolute; left: 0; top: 21px;
+    width: 14px; height: 1px; background: var(--gray-400);
+  }
+  .split-owned li { color: var(--slate); font-weight: 500; }
+  .split-owned li::before {
+    content: "→"; position: absolute; left: 0; top: 12px;
+    font-family: var(--mono); font-size: 13px;
+    color: var(--clay); font-weight: 500;
+  }
+
+  /* Manifesto */
+  .manifesto {
+    position: relative;
+    padding: 80px 56px 72px;
+    background: linear-gradient(160deg, #161B20 0%, #0E1215 100%);
+    border: 0.5px solid var(--border-hair);
+    border-radius: 24px;
+    overflow: hidden;
+    text-align: center;
+  }
+  .manifesto::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(700px circle at 50% 110%, rgba(212,169,76,0.14), transparent 55%),
+      radial-gradient(400px circle at 20% 10%, rgba(212,169,76,0.06), transparent 55%);
+    pointer-events: none;
+  }
+  .manifesto::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(240,239,230,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,239,230,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+    pointer-events: none;
+  }
+  .manifesto-mark {
+    position: relative;
+    font-family: var(--serif); font-size: 120px;
+    color: var(--clay); line-height: 0.2;
+    margin-bottom: 40px; font-style: italic;
+    height: 28px;
+  }
+  .manifesto-text {
+    position: relative;
+    font-family: var(--serif);
+    font-size: clamp(26px, 3.4vw, 44px);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 60;
+    line-height: 1.2; letter-spacing: -0.02em;
+    color: var(--slate);
+    max-width: 20ch; margin: 0 auto;
+    text-wrap: balance;
+  }
+  .manifesto-text em { color: var(--clay); font-style: italic; }
+  .manifesto-cite {
+    position: relative;
+    font-family: var(--mono); font-size: 11.5px;
+    color: var(--gray-500); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-top: 40px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  .manifesto-cite::before, .manifesto-cite::after {
+    content: ""; width: 32px; height: 1px; background: var(--gray-300);
+  }
+
+  @media (max-width: 900px) {
+    .shift-stats { grid-template-columns: 1fr; }
+    .shift-stat { border-right: none; border-bottom: 0.5px solid var(--border-hair); padding: 36px 28px; }
+    .shift-stat:last-child { border-bottom: none; }
+    .shift-split { grid-template-columns: 1fr; gap: 32px; padding: 40px 0; }
+    .split-divider { display: none; }
+    .split-col { padding: 0; }
+    .chart { padding: 24px; }
+    .chart-row { grid-template-columns: 1fr; gap: 6px; }
+    .chart-label { font-size: 13.5px; }
+    .chart-track { height: 26px; }
+    .chart-pct { position: static; transform: none; margin-top: 6px; display: block; }
+    .manifesto { padding: 56px 28px; }
+    .manifesto-mark { font-size: 80px; margin-bottom: 24px; height: 20px; }
+    .hero-decor { width: 100%; opacity: 0.4; }
+  }
+
+  /* ────── MASTHEAD HERO (REDESIGN) ────── */
+  .cursor-glow {
+    position: fixed; top: 0; left: 0;
+    width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,169,76,0.08), transparent 65%);
+    transform: translate(-50%, -50%);
+    pointer-events: none; z-index: 50;
+    transition: opacity .3s;
+    will-change: transform;
+  }
+  .masthead {
+    position: relative;
+    padding: 48px var(--gutter) 72px;
+    max-width: 1280px; margin: 0 auto;
+    overflow: hidden;
+  }
+  .masthead-rule {
+    display: flex; align-items: center; gap: 16px;
+    padding: 12px 0;
+    border-top: 1px solid var(--border-hair);
+    border-bottom: 1px solid var(--border-hair);
+    font-family: var(--mono); font-size: 11px;
+    color: var(--gray-500); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 36px;
+  }
+  .masthead-rule .sep { flex: 1; height: 1px; background: var(--border-hair); }
+  .masthead-rule .vol { color: var(--clay); }
+  .masthead-rule .dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--clay);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  .masthead-name {
+    font-family: var(--serif);
+    font-size: clamp(68px, 13vw, 200px);
+    font-weight: 400;
+    font-variation-settings: 'opsz' 96;
+    line-height: 0.88;
+    letter-spacing: -0.045em;
+    color: var(--slate);
+    margin: 0 0 24px;
+    text-wrap: balance;
+    position: relative;
+  }
+  .masthead-name .amp {
+    font-style: italic; color: var(--clay);
+    font-feature-settings: "ss01" 1;
+  }
+  .masthead-byline {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: start;
+    padding-top: 28px;
+    border-top: 1px solid var(--border-hair);
+  }
+  .masthead-byline-lead {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.3;
+    color: var(--slate);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-wrap: pretty;
+    font-variation-settings: 'opsz' 32;
+  }
+  .masthead-byline-lead em { color: var(--clay); font-style: italic; }
+  .masthead-byline-lead .drop {
+    font-family: var(--serif); float: left;
+    font-size: 5.2em; line-height: 0.85;
+    font-weight: 400; color: var(--clay);
+    padding: 8px 14px 0 0; font-style: italic;
+    font-variation-settings: 'opsz' 72;
+  }
+  .masthead-meta {
+    display: flex; flex-direction: column; gap: 2px;
+    padding-left: 32px;
+    border-left: 1px solid var(--border-hair);
+  }
+  .masthead-meta-row {
+    display: grid; grid-template-columns: 90px 1fr; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px dotted var(--border-hair);
+    font-size: 13.5px;
+  }
+  .masthead-meta-row:last-child { border-bottom: none; }
+  .masthead-meta-label {
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--gray-500); letter-spacing: 0.08em;
+    text-transform: uppercase; padding-top: 2px;
+  }
+  .masthead-meta-val { color: var(--slate); font-weight: 500; }
+  .masthead-meta-val a {
+    color: var(--slate); text-decoration: none;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .masthead-meta-val a:hover { color: var(--clay); border-color: var(--clay); }
+  .masthead-actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+
+  /* Ticker marquee */
+  .ticker {
+    position: relative;
+    padding: 16px 0;
+    border-top: 1px solid var(--border-hair);
+    border-bottom: 1px solid var(--border-hair);
+    overflow: hidden;
+    background: linear-gradient(to bottom, rgba(212,169,76,0.02), transparent);
+  }
+  .ticker-track {
+    display: flex; gap: 56px;
+    animation: tickerSlide 42s linear infinite;
+    width: max-content;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--gray-700); letter-spacing: 0.06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+  .ticker-item { display: flex; align-items: center; gap: 12px; }
+  .ticker-item .tag {
+    color: var(--clay); font-weight: 500;
+  }
+  .ticker-item .val { color: var(--slate); font-weight: 500; }
+  .ticker-item::after {
+    content: "◆"; color: var(--clay); opacity: 0.5; font-size: 8px;
+  }
+  @keyframes tickerSlide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ────── P&L METRICS (REDESIGN) ────── */
+  .pnl {
+    border-top: 1px solid var(--clay);
+    border-bottom: 1px solid var(--clay);
+    padding: 24px 0;
+    font-family: var(--serif);
+    margin-top: 12px;
+    background: linear-gradient(to bottom, rgba(212,169,76,0.025), transparent);
+  }
+  .pnl-head {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 160px;
+    gap: 20px;
+    padding: 10px 0 14px;
+    border-bottom: 1px solid var(--border-hair);
+    font-family: var(--mono); font-size: 10.5px;
+    color: var(--gray-500); letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .scroll-hint svg {
-    width: 16px; height: 16px; stroke: var(--fg-tertiary); fill: none; stroke-width: 2;
-    animation: nudge 2s ease-in-out infinite;
+  .pnl-head-amt { text-align: right; }
+  .pnl-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 160px;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px dotted var(--border-hair);
+    align-items: baseline;
+    transition: background .15s, padding .2s;
+    position: relative;
   }
-  @keyframes nudge {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(6px); }
+  .pnl-row:hover {
+    background: rgba(212,169,76,0.04);
+    padding-left: 12px;
+  }
+  .pnl-row:last-child { border-bottom: none; }
+  .pnl-code {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--clay); font-weight: 500;
+    letter-spacing: 0.04em;
+    padding-top: 8px;
+  }
+  .pnl-item {
+    font-family: var(--serif); font-size: 22px;
+    color: var(--slate); font-weight: 500;
+    letter-spacing: -0.015em;
+    font-variation-settings: 'opsz' 32;
+  }
+  .pnl-item em { color: var(--clay); font-style: italic; }
+  .pnl-note {
+    font-size: 13.5px; color: var(--gray-700);
+    line-height: 1.45; padding-top: 6px;
+    font-family: var(--sans);
+  }
+  .pnl-amt {
+    font-family: var(--serif); font-size: 32px;
+    color: var(--clay); text-align: right;
+    letter-spacing: -0.025em; font-weight: 400;
+    font-variation-settings: 'opsz' 48;
+    font-feature-settings: "tnum" 1, "lnum" 1;
+    white-space: nowrap;
+  }
+  .pnl-amt.sm { font-size: 20px; }
+  .pnl-amt .sup { font-size: 0.55em; vertical-align: super; margin-left: 2px; color: var(--gray-500); }
+  .pnl-total {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 160px;
+    gap: 20px;
+    padding: 22px 0 10px;
+    border-top: 2px double var(--clay);
+    margin-top: 6px;
+    align-items: baseline;
+  }
+  .pnl-total .pnl-item {
+    font-family: var(--serif); font-style: italic;
+    font-size: 24px; color: var(--clay);
+  }
+  .pnl-total .pnl-amt { font-size: 36px; }
+
+  /* ────── DIALS ────── */
+  .dials {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border-hair);
+    border-bottom: 1px solid var(--border-hair);
+  }
+  .dial {
+    padding: 44px 32px 40px;
+    border-right: 1px solid var(--border-hair);
+    border-bottom: 1px solid var(--border-hair);
+    text-align: center;
+    position: relative;
+    transition: background 240ms ease;
+  }
+  .dial:nth-child(3n) { border-right: none; }
+  .dial:nth-last-child(-n+3) { border-bottom: none; }
+  .dial:hover { background: rgba(212,169,76,0.035); }
+  .dial-ring {
+    position: relative;
+    width: 160px; height: 160px;
+    margin: 0 auto 24px;
+  }
+  .dial-ring svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+  .dial-ring .track {
+    fill: none;
+    stroke: var(--border-hair);
+    stroke-width: 2;
+  }
+  .dial-ring .fill {
+    fill: none;
+    stroke: var(--clay);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    /* 2πr = 2π×52 ≈ 326.73 */
+    stroke-dasharray: 326.73;
+    stroke-dashoffset: calc(326.73 * (1 - var(--pct) / 100));
+    transition: stroke-dashoffset 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+    filter: drop-shadow(0 0 8px rgba(212,169,76,0.35));
+  }
+  .dial-ring::before {
+    content: "";
+    position: absolute; inset: 18px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,169,76,0.06), transparent 70%);
+    pointer-events: none;
+  }
+  .dial-value {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--serif);
+    font-size: 46px;
+    font-variation-settings: 'opsz' 48;
+    color: var(--slate);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .dial-value.sm { font-size: 26px; letter-spacing: -0.01em; }
+  .dial-value .sup {
+    font-size: 0.45em;
+    vertical-align: super;
+    margin-left: 2px;
+    color: var(--clay);
+    font-style: italic;
+  }
+  .dial-kicker {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--clay); letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .dial-label {
+    font-size: 14px;
+    color: var(--gray-700);
+    line-height: 1.5;
+    max-width: 280px; margin: 0 auto;
+    font-family: var(--sans);
+  }
+  @media (max-width: 900px) {
+    .dials { grid-template-columns: repeat(2, 1fr); }
+    .dial { padding: 32px 20px; border-right: 1px solid var(--border-hair); border-bottom: 1px solid var(--border-hair); }
+    .dial:nth-child(3n) { border-right: 1px solid var(--border-hair); }
+    .dial:nth-child(2n) { border-right: none; }
+    .dial:nth-last-child(-n+3) { border-bottom: 1px solid var(--border-hair); }
+    .dial:nth-last-child(-n+2) { border-bottom: none; }
+    .dial-ring { width: 130px; height: 130px; margin-bottom: 18px; }
+    .dial-value { font-size: 36px; }
+    .dial-value.sm { font-size: 22px; }
   }
 
-  /* ── FOOTER ── */
-  footer {
-    max-width: var(--max-width-wide); margin: 0 auto;
-    padding: 48px 32px 64px; border-top: 1px solid var(--border);
+  @media (max-width: 900px) {
+    .masthead-byline { grid-template-columns: 1fr; gap: 32px; }
+    .masthead-meta { padding-left: 0; border-left: none;
+      padding-top: 20px; border-top: 1px solid var(--border-hair); }
+    .pnl-head, .pnl-row, .pnl-total {
+      grid-template-columns: 36px 1fr 110px; gap: 12px;
+    }
+    .pnl-head-note, .pnl-note { display: none; }
+    .pnl-item { font-size: 17px; }
+    .pnl-amt { font-size: 22px; }
+    .pnl-total .pnl-amt { font-size: 26px; }
   }
-  .footer-inner {
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 16px;
+  .masthead-tagline {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.3;
+    color: var(--gray-700);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin: 8px 0 36px;
+    max-width: 42ch;
+    font-variation-settings: 'opsz' 32;
   }
-  .footer-text { font-size: 13px; color: var(--fg-tertiary); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-size: 13px; font-weight: 500; color: var(--fg-secondary);
-    text-decoration: none; transition: color 0.2s;
+  .masthead-tagline em { color: var(--clay); font-style: italic; }
+  .masthead-tagline .amp { font-style: italic; color: var(--clay); }
+  .dial-suffix {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    color: var(--gray-500);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-style: normal;
+    margin-top: 6px;
+    font-variation-settings: normal;
   }
-  .footer-links a:hover { color: var(--accent); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    .hero { padding: 56px 20px 48px; min-height: auto; }
-    section, .section-divider { padding: 0 20px; }
-    .horiz-section { padding-left: 20px; padding-right: 20px; }
-    .horiz-track-wrapper { margin-left: -20px; margin-right: -20px; }
-    .horiz-track { padding: 8px 20px 24px; }
-    .nav-inner { padding: 0 16px; }
-    .nav-links a:not(.nav-cta) { display: none; }
-    .skills-grid, .workflow-cards { grid-template-columns: 1fr; }
-    .highlights-grid { grid-template-columns: repeat(2, 1fr); }
-    .ai-tools-grid { grid-template-columns: repeat(3, 1fr); }
-    footer { padding: 32px 20px 48px; }
-    .role-header { padding: 14px 16px; }
-    .role-content { padding: 0 16px 20px; }
-    .role-left { flex-wrap: wrap; }
-    .company-header { flex-direction: column; }
-    .about-content { grid-template-columns: 1fr; gap: 24px; }
-    .horiz-card { flex: 0 0 260px; }
-  }
+  .dial-value { flex-direction: column; }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
+<!-- ══════ NAV ══════ -->
+<nav class="site-nav">
   <div class="nav-inner">
-    <a href="#" class="nav-name">Ramneek Suri</a>
+    <a href="#" class="nav-brand">
+      <span class="spark" aria-hidden="true"></span>
+      Ramneek Suri
+    </a>
     <div class="nav-links">
       <a href="#about">About</a>
-      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
       <a href="#ai">AI</a>
+      <a href="#shift">Perspective</a>
       <a href="#expertise">Expertise</a>
-      <a href="#beyond">Life</a>
-      <a href="mailto:ramneek100@gmail.com" class="nav-cta">Get in touch</a>
+      <a href="#life">Life</a>
+      <a href="/cdn-cgi/l/email-protection#a6d4c7cbc8c3c3cd979696e6c1cbc7cfca88c5c9cb" class="nav-cta">Get in touch</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-eyebrow reveal-line"><span>CPA &middot; Washington &amp; Ontario</span></div>
-  <h1>
-    <div class="reveal-line"><span>Technical accounting leader</span></div>
-    <div class="reveal-line"><span>with deep experience across</span></div>
-    <div class="reveal-line"><span class="accent-word">high-growth AI, technology,</span></div>
-    <div class="reveal-line"><span class="accent-word">and SaaS companies.</span></div>
-  </h1>
-  <p class="hero-sub fade-up">
-    Advising and auditing clients across complex US GAAP transactions, acquisitions, divestitures, and SEC reporting. Big 4 rigor applied to the fastest-moving environments in tech&mdash;from hyperscalers to pre-IPO startups.
-  </p>
-  <div class="hero-meta fade-up">
-    <span>
-      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Seattle, WA
-    </span>
-    <span>
-      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      ramneek100@gmail.com
-    </span>
-    <span>
-      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-      +1 206-604-0248
-    </span>
+<!-- ══════ HERO (MASTHEAD) ══════ -->
+<header class="masthead">
+  <div class="masthead-rule">
+    <span class="dot"></span>
+    <span class="vol">Vol. IX &mdash; Practitioner&rsquo;s Edition</span>
+    <span class="sep"></span>
+    <span>Seattle, WA</span>
+    <span class="sep"></span>
+    <span id="todayStamp">—</span>
+    <span class="sep"></span>
+    <span>Est. 2016</span>
   </div>
-</div>
 
-<!-- ABOUT / PHILOSOPHY -->
+  <h1 class="masthead-name reveal-mask"><span>Ramneek Suri</span></h1>
+  <div class="masthead-tagline">Technical accounting <span class="amp">&amp;</span> AI <em>for the companies shaping what&rsquo;s next.</em></div>
+
+  <div class="masthead-byline">
+    <p class="masthead-byline-lead fade-up">
+I&rsquo;m a Big&nbsp;4 CPA advising the companies shaping what&rsquo;s next &mdash; AI, SaaS, and hyperscalers &mdash; on the hardest parts of US&nbsp;GAAP, IPO readiness, and M&amp;A. Nine years of compounding technical judgment, paired with a <em>builder&rsquo;s instinct</em> for using agents, pipelines, and LLMs to do the work better.
+    </p>
+    <aside class="masthead-meta fade-up">
+      <div class="masthead-meta-row"><span class="masthead-meta-label">Seat</span><span class="masthead-meta-val">Senior Manager · PwC Deals</span></div>
+      <div class="masthead-meta-row"><span class="masthead-meta-label">Licensed</span><span class="masthead-meta-val">CPA · WA &amp; ON</span></div>
+      <div class="masthead-meta-row"><span class="masthead-meta-label">Reach</span><span class="masthead-meta-val"><a href="/cdn-cgi/l/email-protection#0e7c6f63606b6b653f3e3e4e69636f6762206d6163"><span class="__cf_email__" data-cfemail="fa889b97949f9f91cbcacaba9d979b9396d4999597">[email&#160;protected]</span></a></span></div>
+      <div class="masthead-meta-row"><span class="masthead-meta-label">Direct</span><span class="masthead-meta-val"><a href="tel:+12066040248">+1 206-604-0248</a></span></div>
+      <div class="masthead-meta-row"><span class="masthead-meta-label">Open to</span><span class="masthead-meta-val">Tech controllership · IPO advisory · AI finance</span></div>
+      <div class="masthead-actions">
+        <a href="/cdn-cgi/l/email-protection#b9cbd8d4d7dcdcd2888989f9ded4d8d0d597dad6d4" class="btn btn-primary">Start a conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#work" class="btn btn-secondary">See the work</a>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<!-- ══════ ABOUT ══════ -->
 <section id="about">
-  <div class="section-header fade-up">
-    <span class="section-number">01</span>
-    <h2 class="section-title">What drives me</h2>
-  </div>
-  <div class="about-content">
-    <div class="about-quote fade-up">
-      Passionate about complex problem solving in accounting, where the right answer comes from combining what the codification permits with the real-world business strategy behind the numbers.
+  <div class="section-inner">
+    <div class="section-label fade-up">01 · What drives me</div>
+    <div class="section-head">
+      <h2 class="section-title fade-up">The right answer comes from <em>context</em>, not just codification.</h2>
+      <p class="section-blurb fade-up">
+        Getting the ASC citation right is table stakes. The real value sits at the intersection of technical accounting and business reality — and, increasingly, in knowing what to hand to an agent and what to hand to a partner.
+      </p>
     </div>
-    <div class="about-text fade-up">
-      <p>The work I find most rewarding sits at the intersection of technical accounting and business context. Getting the ASC citation right is table stakes. The real value is understanding why a company structured a deal a certain way, what the business implications are, and how the accounting treatment should reflect that reality. I lean heavily on AI to handle the volume and the repetitive layers of the work so that my time goes toward what actually requires judgment, experience, and a seat at the table.</p>
-    </div>
-  </div>
-</section>
 
-<div class="section-divider"><hr></div>
-
-<!-- AT A GLANCE -->
-<section id="highlights">
-  <div class="section-header fade-up">
-    <span class="section-number">02</span>
-    <h2 class="section-title">At a glance</h2>
-  </div>
-  <div class="highlights-grid stagger-children">
-    <div class="highlight-card">
-      <div class="highlight-number">9+</div>
-      <h3>Years advising &amp; auditing</h3>
-      <p>Big 4 career spanning PwC Deals Advisory and KPMG Audit across SaaS, AI, and hyperscaler clients.</p>
-    </div>
-    <div class="highlight-card">
-      <div class="highlight-number">12+</div>
-      <h3>Person teams led</h3>
-      <p>Cross-functional engagements across advisory and audit, spanning large deal transactions, IPO readiness, IPO advisory, and M&amp;A diligence.</p>
-    </div>
-    <div class="highlight-card">
-      <div class="highlight-number">$10B+</div>
-      <h3>Overall deal volume</h3>
-      <p>Acquisitions, divestitures, and IPO transactions with deep PPA, revenue timing, and SSP analysis.</p>
-    </div>
-    <div class="highlight-card">
-      <div class="highlight-number">US GAAP</div>
-      <h3>Technical accounting depth</h3>
-      <p>Revenue Recognition (ASC 606), Stock-Based Compensation (ASC 718), Business Combinations (ASC 805), Leases (ASC 842), Software Costs (ASC 350-40), EPS (ASC 260), Subsequent Events (ASC 855), Segment Reporting (ASC 280), Credit Losses (ASC 326).</p>
-    </div>
-    <div class="highlight-card">
-      <div class="highlight-number">AI</div>
-      <h3>Builder &amp; early adopter</h3>
-      <p>AI agents for contract review, diligence templating, and LLM-powered workflow automation across engagements.</p>
-    </div>
-    <div class="highlight-card">
-      <div class="highlight-number">CPA</div>
-      <h3>Dual-licensed</h3>
-      <p>Active CPA in Washington State (2023) and Ontario (2021). US GAAP, IFRS, and ASPE proficiency.</p>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"><hr></div>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-header fade-up">
-    <span class="section-number">03</span>
-    <h2 class="section-title">Career progression</h2>
-  </div>
-
-  <div class="timeline">
-    <!-- PwC -->
-    <div class="timeline-company fade-up">
-      <div class="company-header">
-        <span class="company-name">PricewaterhouseCoopers LLP</span>
-        <span class="company-dates">Nov 2021 &ndash; Present</span>
+    <div class="pullquote fade-up">
+      <div class="pullquote-mark">&ldquo;</div>
+      <div class="pullquote-text">
+        I lean heavily on AI to handle the volume and the repetitive layers of the work, so my time goes toward what actually requires <em>judgment, experience, and a seat at the table.</em>
       </div>
-      <div class="company-location">Deals Advisory &middot; Seattle, WA</div>
+    </div>
 
-      <div class="role-item" data-role>
-        <div class="role-header" onclick="toggleRole(this)">
-          <div class="role-left">
-            <span class="role-badge">Senior Manager</span>
-            <span class="role-title">Deals Advisory &mdash; Engagement Lead</span>
+    <div class="about-grid">
+      <p class="fade-up">
+        The work I find most rewarding sits at the intersection of technical accounting and business context. Understanding why a company structured a deal a certain way — what the business implications are, and how the accounting treatment should reflect that reality — is where the real value shows up.
+      </p>
+      <p class="fade-up">
+        I&rsquo;ve built agents for contract review, pipelines for diligence templating, and LLM workflows that automate the repetitive layers of an engagement. That frees senior capacity for the judgment calls clients actually hire us for.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ METRICS — P&L ══════ -->
+<section id="metrics" aria-label="Statement of Experience">
+  <div class="section-inner" style="padding-bottom:48px;">
+    <div class="section-label fade-up">02 · Statement of Experience</div>
+    <div class="section-head">
+      <h2 class="section-title fade-up">A career, <em>on the books.</em></h2>
+      <p class="section-blurb fade-up">Read it like a P&amp;L. Every line is a balance sheet item built up over nine years of compounding engagements.</p>
+    </div>
+  </div>
+  <div class="dials fade-up">
+    <div class="dial" style="--pct: 100;">
+      <div class="dial-ring">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="track"/><circle cx="60" cy="60" r="52" class="fill"/></svg>
+        <div class="dial-value">9<span class="sup">+</span><span class="dial-suffix">yrs</span></div>
+      </div>
+      <div class="dial-kicker">Experience</div>
+      <div class="dial-label">Years advising &amp; auditing across Big 4, continuous.</div>
+    </div>
+    <div class="dial" style="--pct: 84;">
+      <div class="dial-ring">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="track"/><circle cx="60" cy="60" r="52" class="fill"/></svg>
+        <div class="dial-value">12<span class="sup">+</span><span class="dial-suffix">people</span></div>
+      </div>
+      <div class="dial-kicker">Leadership</div>
+      <div class="dial-label">Person teams led on IPO &amp; M&amp;A engagements.</div>
+    </div>
+    <div class="dial" style="--pct: 92;">
+      <div class="dial-ring">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="track"/><circle cx="60" cy="60" r="52" class="fill"/></svg>
+        <div class="dial-value">$10B<span class="sup">+</span><span class="dial-suffix">advised</span></div>
+      </div>
+      <div class="dial-kicker">Deal volume</div>
+      <div class="dial-label">Acquisitions, divestitures, IPO transactions.</div>
+    </div>
+    <div class="dial" style="--pct: 88;">
+      <div class="dial-ring">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="track"/><circle cx="60" cy="60" r="52" class="fill"/></svg>
+        <div class="dial-value sm">US GAAP</div>
+      </div>
+      <div class="dial-kicker">Depth</div>
+      <div class="dial-label">ASC 606, 718, 805, 842, 350-40, 260, 855, 280, 326.</div>
+    </div>
+    <div class="dial" style="--pct: 76;">
+      <div class="dial-ring">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="track"/><circle cx="60" cy="60" r="52" class="fill"/></svg>
+        <div class="dial-value sm">AI-native</div>
+      </div>
+      <div class="dial-kicker">Builder</div>
+      <div class="dial-label">Agents, pipelines, and LLM workflows in daily use.</div>
+    </div>
+    <div class="dial" style="--pct: 100;">
+      <div class="dial-ring">
+        <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="52" class="track"/><circle cx="60" cy="60" r="52" class="fill"/></svg>
+        <div class="dial-value sm">CPA</div>
+      </div>
+      <div class="dial-kicker">Credentials</div>
+      <div class="dial-label">Active in Washington &amp; Ontario · US GAAP, IFRS, ASPE.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ WORK / TIMELINE ══════ -->
+<section id="work">
+  <div class="section-inner">
+    <div class="section-label fade-up">03 · Career progression</div>
+    <div class="section-head">
+      <h2 class="section-title fade-up">From audit fieldwork to <em>deal architect.</em></h2>
+      <p class="section-blurb fade-up">
+        Nine years of compounding — from KPMG audit workpapers to leading 12-person cross-functional teams on IPOs, divestitures, and acquisitions at PwC Deals Advisory. Click any role to expand.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <!-- PwC -->
+      <div class="company-block fade-up">
+        <div class="company-meta">
+          <div class="company-meta-left">
+            <div class="company-name">PricewaterhouseCoopers LLP</div>
+            <div class="company-sub">Deals Advisory · Seattle, WA</div>
           </div>
-          <div class="role-right">
-            <span class="role-dates-label">Jan 2026 &ndash; Present</span>
-            <svg class="role-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+          <div class="company-dates">Nov 2021 — Present</div>
         </div>
-        <div class="role-body">
-          <div class="role-content">
-            <ul>
-              <li>Orchestrate 12+ person cross-functional teams across IPO, divestiture, and acquisition engagements as the single point of coordination between client management, legal, auditors, and SEC reviewers</li>
-              <li>End-to-end technical accounting authority on S-1 filings, owning footnote disclosures, ASC 855 subsequent events, disclosure checklist reviews, and audit liaison for private-to-public transitions</li>
-              <li>Designed and executed first mock quarterly close processes for pre-IPO SaaS clients, building close calendars, JE templates, reconciliation schedules, and review workflows from scratch</li>
-              <li>Served as financial reporting advisor to high-growth SaaS companies navigating private-to-public transitions, uplifting financials to SEC standards and authoring first-draft filing documents</li>
-              <li>Directed SSP analysis for new product launch scenarios, modeling downstream allocation impact on existing revenue streams to ensure financial readiness before go-live</li>
-              <li>Analyzed performance obligation structures and revenue timing on acquisition deals exceeding $4B, informing purchase price allocation and post-close integration</li>
-              <li>Sourced and closed new engagements through proposal development, client relationship management, and market strategy</li>
-            </ul>
-            <div class="callout-box">
-              <div class="callout-label">Hyperscaler engagement</div>
-              <p>Actively embedded with hyperscaler clients as the on-call senior resource for high-stakes reporting matters, delivering executive-level technical memos and analyses on revenue recognition, stock-based compensation, and complex business combinations under compressed timelines.</p>
+
+        <div>
+          <div class="role-card" data-role>
+            <div class="role-head" onclick="toggleRole(this)">
+              <div class="role-head-left">
+                <span class="role-badge">Senior Manager</span>
+                <span class="role-title">Engagement Lead</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span class="role-dates">Jan 2026 — Present</span>
+                <svg class="role-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
             </div>
+            <div class="role-body"><div class="role-inner">
+              <ul>
+                <li>Orchestrate 12+ person cross-functional teams across IPO, divestiture, and acquisition engagements as the single point of coordination between client management, legal, auditors, and SEC reviewers.</li>
+                <li>End-to-end technical accounting authority on S-1 filings — footnote disclosures, ASC 855 subsequent events, disclosure checklist reviews, and audit liaison for private-to-public transitions.</li>
+                <li>Designed and executed first mock quarterly close processes for pre-IPO SaaS clients, building close calendars, JE templates, reconciliation schedules, and review workflows from scratch.</li>
+                <li>Served as financial reporting advisor to high-growth SaaS companies navigating private-to-public transitions, uplifting financials to SEC standards and authoring first-draft filing documents.</li>
+                <li>Directed SSP analysis for new product launch scenarios, modeling downstream allocation impact on existing revenue streams to ensure financial readiness before go-live.</li>
+                <li>Analyzed performance obligation structures and revenue timing on acquisition deals exceeding $4B, informing purchase price allocation and post-close integration.</li>
+                <li>Sourced and closed new engagements through proposal development, client relationship management, and market strategy.</li>
+              </ul>
+              <div class="callout">
+                <div class="callout-label">Hyperscaler engagement</div>
+                <p>Actively embedded with hyperscaler clients as the on-call senior resource for high-stakes reporting matters, delivering executive-level technical memos and analyses on revenue recognition, stock-based compensation, and complex business combinations under compressed timelines.</p>
+              </div>
+            </div></div>
           </div>
-        </div>
-      </div>
 
-      <div class="role-item" data-role>
-        <div class="role-header" onclick="toggleRole(this)">
-          <div class="role-left">
-            <span class="role-badge">Manager</span>
-            <span class="role-title">Deals Advisory &mdash; Workstream Lead</span>
-          </div>
-          <div class="role-right">
-            <span class="role-dates-label">Jul 2023 &ndash; Jan 2026</span>
-            <svg class="role-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="role-body">
-          <div class="role-content">
-            <ul>
-              <li>Led revenue recognition workstream on a $1B+ billing system migration from Salesforce CPQ to Zuora, leveraging Alteryx to reconcile hundreds of thousands of contracts and validate revenue recognition logic</li>
-              <li>Owned revenue recognition workstreams applying ASC 606 to consumption-based API pricing, bundled SaaS arrangements, and variable consideration with executive-level flux analyses</li>
-              <li>Performed principal-vs-agent analyses for platform and marketplace arrangements under ASC 606, advising on third-party platform revenue models for high-growth technology clients</li>
-              <li>Evaluated AR allowance methodologies and credit impairment under ASC 326 during IPO readiness assessments, advising on expected credit loss model design</li>
-              <li>Drove revenue recognition analysis on a power and utilities divestiture, applying carve-out and ASC 606 guidance to a multi-stream model with executive dashboards</li>
-              <li>Built AI-powered agents automating contract review and diligence templating across ASC 606, cutting manual review time and standardizing deliverable outputs</li>
-              <li>Applied AI tooling to readiness engagements, automating draft report generation and freeing senior capacity for judgment-intensive work</li>
-            </ul>
-            <div class="callout-box">
-              <div class="callout-label">Hyperscaler engagement</div>
-              <p>Embedded with hyperscaler clients delivering technical accounting memos on ASC 606, ASC 718 (stock-based compensation), ASC 350-40 (software development costs), EPS (ASC 260), and pre- and post-close business combinations (ASC 805).</p>
+          <div class="role-card" data-role>
+            <div class="role-head" onclick="toggleRole(this)">
+              <div class="role-head-left">
+                <span class="role-badge">Manager</span>
+                <span class="role-title">Workstream Lead</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span class="role-dates">Jul 2023 — Jan 2026</span>
+                <svg class="role-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
             </div>
+            <div class="role-body"><div class="role-inner">
+              <ul>
+                <li>Led revenue recognition workstream on a $1B+ billing system migration from Salesforce CPQ to Zuora, leveraging Alteryx to reconcile hundreds of thousands of contracts and validate revenue recognition logic.</li>
+                <li>Owned revenue recognition workstreams applying ASC 606 to consumption-based API pricing, bundled SaaS arrangements, and variable consideration with executive-level flux analyses.</li>
+                <li>Performed principal-vs-agent analyses for platform and marketplace arrangements under ASC 606, advising on third-party platform revenue models for high-growth technology clients.</li>
+                <li>Evaluated AR allowance methodologies and credit impairment under ASC 326 during IPO readiness assessments, advising on expected credit loss model design.</li>
+                <li>Drove revenue recognition analysis on a power and utilities divestiture, applying carve-out and ASC 606 guidance to a multi-stream model with executive dashboards.</li>
+                <li>Built AI-powered agents automating contract review and diligence templating across ASC 606, cutting manual review time and standardizing deliverable outputs.</li>
+                <li>Applied AI tooling to readiness engagements, automating draft report generation and freeing senior capacity for judgment-intensive work.</li>
+              </ul>
+              <div class="callout">
+                <div class="callout-label">Hyperscaler engagement</div>
+                <p>Embedded with hyperscaler clients delivering technical accounting memos on ASC 606, ASC 718 (stock-based compensation), ASC 350-40 (software development costs), EPS (ASC 260), and pre- and post-close business combinations (ASC 805).</p>
+              </div>
+            </div></div>
+          </div>
+
+          <div class="role-card" data-role>
+            <div class="role-head" onclick="toggleRole(this)">
+              <div class="role-head-left">
+                <span class="role-badge">Senior Associate</span>
+                <span class="role-title">Execution &amp; Delivery</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span class="role-dates">Nov 2021 — Jul 2023</span>
+                <svg class="role-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="role-body"><div class="role-inner">
+              <ul>
+                <li>Directly owned and co-owned portions of month-end close processes while embedded at client sites — revenue account reconciliations, deferred revenue roll-forwards, unbilled receivable analyses.</li>
+                <li>Worked alongside Big 4 audit teams on complex revenue and AR transactions, supporting walkthroughs, PBC preparation, and technical accounting analysis across engagement workstreams.</li>
+                <li>Built Alteryx workflows for heavy data analysis and reconciliation modeling, automating recurring workbooks and data transformation processes that previously required days of manual spreadsheet work.</li>
+                <li>Designed and delivered executive-level presentations and engagement analytics using Power BI and Tableau, replacing static reports with interactive dashboards for client and leadership consumption.</li>
+                <li>Supported SEC reporting document setup and configuration in Workiva, structuring S-1 and periodic filing templates with linked data sources, disclosure checklists, and cross-referenced footnotes.</li>
+              </ul>
+            </div></div>
           </div>
         </div>
       </div>
 
-      <div class="role-item" data-role>
-        <div class="role-header" onclick="toggleRole(this)">
-          <div class="role-left">
-            <span class="role-badge">Senior Associate</span>
-            <span class="role-title">Deals Advisory &mdash; Execution &amp; Delivery</span>
+      <!-- KPMG -->
+      <div class="company-block fade-up">
+        <div class="company-meta">
+          <div class="company-meta-left">
+            <div class="company-name">KPMG LLP</div>
+            <div class="company-sub">Audit · Toronto, Canada</div>
           </div>
-          <div class="role-right">
-            <span class="role-dates-label">Nov 2021 &ndash; Jul 2023</span>
-            <svg class="role-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
+          <div class="company-dates">May 2017 — Oct 2021</div>
         </div>
-        <div class="role-body">
-          <div class="role-content">
-            <ul>
-              <li>Directly owned and co-owned portions of month-end close processes while embedded at client sites, including revenue account reconciliations, deferred revenue roll-forwards, and unbilled receivable analyses</li>
-              <li>Worked alongside Big 4 audit teams on complex revenue and AR transactions, supporting walkthroughs, PBC preparation, and technical accounting analysis across engagement workstreams</li>
-              <li>Built Alteryx workflows for heavy data analysis and reconciliation modeling, automating recurring workbooks and data transformation processes that previously required days of manual spreadsheet work</li>
-              <li>Designed and delivered executive-level presentations and engagement analytics using Power BI and Tableau, replacing static reports with interactive dashboards for client and leadership consumption</li>
-              <li>Supported SEC reporting document setup and configuration in Workiva, structuring S-1 and periodic filing templates with linked data sources, disclosure checklists, and cross-referenced footnotes</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- KPMG -->
-    <div class="timeline-company fade-up">
-      <div class="company-header">
-        <span class="company-name">KPMG LLP</span>
-        <span class="company-dates">May 2017 &ndash; Oct 2021</span>
-      </div>
-      <div class="company-location">Audit &middot; Toronto, Canada</div>
+        <div>
+          <div class="role-card" data-role>
+            <div class="role-head" onclick="toggleRole(this)">
+              <div class="role-head-left">
+                <span class="role-badge">Senior Accountant</span>
+                <span class="role-title">Audit Team Lead</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span class="role-dates">Oct 2020 — Oct 2021</span>
+                <svg class="role-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="role-body"><div class="role-inner">
+              <ul>
+                <li>Led 5-person audit teams on complex engagements including a $400M+ Canadian public company, managing timelines, reviewing workpapers, and reporting findings to senior leadership.</li>
+                <li>Built Power BI dashboards delivering executive-level KPI and variance insights, transitioning clients from static reports to real-time analytics and improving close-cycle visibility.</li>
+                <li>Piloted journal entry analytics automation, deploying cloud-based tools to flag high-risk transactions and strengthen audit evidence on a publicly listed client.</li>
+                <li>Evaluated internal controls and performed SOX-relevant walkthroughs across payroll, fixed assets, cash and investments, and lease accounting workstreams.</li>
+                <li>Performed IFRS 15 revenue recognition analysis for complex industrial clients, evaluating contract terms, performance obligations, and variable consideration across multi-element arrangements.</li>
+              </ul>
+            </div></div>
+          </div>
 
-      <div class="role-item" data-role>
-        <div class="role-header" onclick="toggleRole(this)">
-          <div class="role-left">
-            <span class="role-badge">Senior Accountant</span>
-            <span class="role-title">Audit &mdash; Team Lead</span>
-          </div>
-          <div class="role-right">
-            <span class="role-dates-label">Oct 2020 &ndash; Oct 2021</span>
-            <svg class="role-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="role-body">
-          <div class="role-content">
-            <ul>
-              <li>Led 5-person audit teams on complex engagements including a $400M+ Canadian public company, managing timelines, reviewing workpapers, and reporting findings to senior leadership</li>
-              <li>Built Power BI dashboards delivering executive-level KPI and variance insights, transitioning clients from static reports to real-time analytics and improving close-cycle visibility</li>
-              <li>Piloted journal entry analytics automation, deploying cloud-based tools to flag high-risk transactions and strengthen audit evidence on a publicly listed client</li>
-              <li>Evaluated internal controls and performed SOX-relevant walkthroughs across payroll, fixed assets, cash and investments, and lease accounting workstreams</li>
-              <li>Performed IFRS 15 revenue recognition analysis for complex industrial clients, evaluating contract terms, performance obligations, and variable consideration across multi-element arrangements</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="role-item" data-role>
-        <div class="role-header" onclick="toggleRole(this)">
-          <div class="role-left">
-            <span class="role-badge">Staff Accountant</span>
-            <span class="role-title">Audit &mdash; Assurance</span>
-          </div>
-          <div class="role-right">
-            <span class="role-dates-label">May 2017 &ndash; Oct 2020</span>
-            <svg class="role-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-        <div class="role-body">
-          <div class="role-content">
-            <ul>
-              <li>Executed substantive audit procedures across revenue recognition, equity compensation, and consolidation workstreams for technology and consumer clients with $500M&ndash;$5B in revenue</li>
-              <li>Prepared and reviewed year-end audit documentation, supporting engagement leads through planning, fieldwork, and wrap-up phases</li>
-              <li>Gained foundational exposure to IFRS and ASPE across multiple industries, building the technical accounting base that underpins all subsequent advisory work</li>
-            </ul>
+          <div class="role-card" data-role>
+            <div class="role-head" onclick="toggleRole(this)">
+              <div class="role-head-left">
+                <span class="role-badge">Staff Accountant</span>
+                <span class="role-title">Assurance</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:14px;">
+                <span class="role-dates">May 2017 — Oct 2020</span>
+                <svg class="role-chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="role-body"><div class="role-inner">
+              <ul>
+                <li>Executed substantive audit procedures across revenue recognition, equity compensation, and consolidation workstreams for technology and consumer clients with $500M–$5B in revenue.</li>
+                <li>Prepared and reviewed year-end audit documentation, supporting engagement leads through planning, fieldwork, and wrap-up phases.</li>
+                <li>Gained foundational exposure to IFRS and ASPE across multiple industries, building the technical accounting base that underpins all subsequent advisory work.</li>
+              </ul>
+            </div></div>
           </div>
         </div>
       </div>
@@ -707,318 +1725,523 @@
   </div>
 </section>
 
-<div class="section-divider"><hr></div>
-
-<!-- AI & AUTOMATION -->
+<!-- ══════ AI ══════ -->
 <section id="ai">
-  <div class="section-header fade-up">
-    <span class="section-number">04</span>
-    <h2 class="section-title">AI &amp; automation</h2>
-  </div>
+  <div class="section-inner">
+    <div class="section-label fade-up">04 · AI &amp; automation</div>
+    <div class="section-head">
+      <h2 class="section-title fade-up">Daily-driver <em>AI workflows</em>, not experiments.</h2>
+      <p class="section-blurb fade-up">
+        I build with AI every day — contract review agents, diligence templating, reconciliation pipelines, and executive dashboards. The tools below aren&rsquo;t a novelty shelf; they&rsquo;re what ships the work.
+      </p>
+    </div>
 
-  <p class="fade-up" style="font-size:15px; line-height:1.7; color:var(--fg-secondary); max-width:680px; margin-bottom:32px;">
-    Early adopter and builder across the AI tooling landscape. I use these tools daily to automate accounting workflows, accelerate diligence, and build repeatable processes&mdash;not just experiment. Click a tool to learn more.
-  </p>
+    <div class="ai-wrap">
+      <div class="ai-tools stagger">
+        <button class="ai-chip active" data-tool="claude-cowork" onclick="showTool(this)">
+          <span class="ai-chip-name">Claude Cowork</span>
+          <span class="ai-chip-type">AI Platform</span>
+        </button>
+        <button class="ai-chip" data-tool="claude-code" onclick="showTool(this)">
+          <span class="ai-chip-name">Claude Code</span>
+          <span class="ai-chip-type">CLI Agent</span>
+        </button>
+        <button class="ai-chip" data-tool="vscode" onclick="showTool(this)">
+          <span class="ai-chip-name">VS Code</span>
+          <span class="ai-chip-type">IDE</span>
+        </button>
+        <button class="ai-chip" data-tool="replit" onclick="showTool(this)">
+          <span class="ai-chip-name">Replit</span>
+          <span class="ai-chip-type">Cloud Dev</span>
+        </button>
+        <button class="ai-chip" data-tool="harvey" onclick="showTool(this)">
+          <span class="ai-chip-name">Harvey AI</span>
+          <span class="ai-chip-type">Legal AI</span>
+        </button>
+        <button class="ai-chip" data-tool="totiq" onclick="showTool(this)">
+          <span class="ai-chip-name">TotIQ</span>
+          <span class="ai-chip-type">Analytics AI</span>
+        </button>
+        <button class="ai-chip" data-tool="alteryx" onclick="showTool(this)">
+          <span class="ai-chip-name">Alteryx</span>
+          <span class="ai-chip-type">Data Automation</span>
+        </button>
+        <button class="ai-chip" data-tool="powerbi" onclick="showTool(this)">
+          <span class="ai-chip-name">Power BI</span>
+          <span class="ai-chip-type">Visualization</span>
+        </button>
+      </div>
 
-  <div class="ai-tools-grid stagger-children" id="aiToolsGrid">
-    <div class="ai-tool-chip" data-tool="claude-cowork" onclick="showTool(this)">
-      <div class="ai-tool-name">Claude Cowork</div>
-      <div class="ai-tool-type">AI Platform</div>
+      <div class="ai-panel" id="aiPanel">
+        <div class="ai-panel-inner" id="aiPanelInner">
+          <div class="ai-panel-kicker">Tool in focus</div>
+          <h3 class="ai-panel-title">Claude Cowork</h3>
+          <p class="ai-panel-text">Central hub for multi-step automation workflows that cut hours out of recurring deliverable cycles. Custom skills generate branded technical memos, structured reports, and formatted client deliverables from raw inputs — turning half a day of formatting into a few minutes of review.</p>
+        </div>
+        <div class="ai-panel-hint">Select any tool &rarr;</div>
+      </div>
     </div>
-    <div class="ai-tool-chip" data-tool="claude-code" onclick="showTool(this)">
-      <div class="ai-tool-name">Claude Code</div>
-      <div class="ai-tool-type">CLI Agent</div>
-    </div>
-    <div class="ai-tool-chip" data-tool="vscode" onclick="showTool(this)">
-      <div class="ai-tool-name">VS Code</div>
-      <div class="ai-tool-type">IDE</div>
-    </div>
-    <div class="ai-tool-chip" data-tool="replit" onclick="showTool(this)">
-      <div class="ai-tool-name">Replit</div>
-      <div class="ai-tool-type">Cloud Dev</div>
-    </div>
-    <div class="ai-tool-chip" data-tool="harvey" onclick="showTool(this)">
-      <div class="ai-tool-name">Harvey AI</div>
-      <div class="ai-tool-type">Legal AI</div>
-    </div>
-    <div class="ai-tool-chip" data-tool="totiq" onclick="showTool(this)">
-      <div class="ai-tool-name">TotIQ</div>
-      <div class="ai-tool-type">Analytics AI</div>
-    </div>
-    <div class="ai-tool-chip" data-tool="alteryx" onclick="showTool(this)">
-      <div class="ai-tool-name">Alteryx</div>
-      <div class="ai-tool-type">Data Automation</div>
-    </div>
-    <div class="ai-tool-chip" data-tool="powerbi" onclick="showTool(this)">
-      <div class="ai-tool-name">Power BI</div>
-      <div class="ai-tool-type">Visualization</div>
-    </div>
-  </div>
 
-  <div class="ai-detail-panel" id="aiDetailPanel">
-    <p class="ai-detail-placeholder">Select a tool above to see how I use it.</p>
-  </div>
-
-  <div class="workflows-header">Automation workflows I've built</div>
-  <div class="workflow-cards stagger-children">
-    <div class="workflow-card">
-      <h4>Contract review agents</h4>
-      <p>Built AI agents to automate contract review during diligence, templating analysis across ASC 606, tax equity partnerships, and high-risk items&mdash;cutting manual review time and standardizing outputs across engagements.</p>
-    </div>
-    <div class="workflow-card">
-      <h4>Readiness report automation</h4>
-      <p>Applied LLM tooling to IPO readiness engagements, automating draft report generation and freeing senior capacity for judgment-intensive technical accounting work.</p>
-    </div>
-    <div class="workflow-card">
-      <h4>Billing migration reconciliation</h4>
-      <p>Leveraged Alteryx to reconcile hundreds of thousands of contracts during a $1B+ Salesforce CPQ-to-Zuora migration, validating revenue recognition logic and identifying credit memo mismatches.</p>
-    </div>
-    <div class="workflow-card">
-      <h4>Journal entry risk analytics</h4>
-      <p>Deployed cloud-based journal entry analytics to flag high-risk transactions on listed clients, automating what was previously a manual sampling process and improving testing coverage.</p>
-    </div>
-    <div class="workflow-card">
-      <h4>Executive dashboards &amp; KPIs</h4>
-      <p>Built Power BI dashboards delivering real-time executive KPI and variance insights, replacing static PDF reports with interactive, drill-down analytics for close-cycle visibility.</p>
-    </div>
-    <div class="workflow-card">
-      <h4>Document generation pipelines</h4>
-      <p>Built end-to-end document automation workflows using Claude Cowork skills, generating branded deliverables, technical memos, and formatted reports from structured data sources with minimal manual intervention.</p>
+    <h3 class="workflows-title fade-up">Workflows I&rsquo;ve shipped</h3>
+    <div class="workflow-grid stagger">
+      <div class="workflow-card">
+        <div class="workflow-num">01</div>
+        <h4>Contract review agents</h4>
+        <p>AI agents that automate contract review during diligence, templating analysis across ASC 606, tax equity partnerships, and high-risk items — cutting manual review time and standardizing outputs.</p>
+      </div>
+      <div class="workflow-card">
+        <div class="workflow-num">02</div>
+        <h4>Readiness report automation</h4>
+        <p>LLM tooling applied to IPO readiness engagements, automating draft report generation and freeing senior capacity for judgment-intensive technical accounting work.</p>
+      </div>
+      <div class="workflow-card">
+        <div class="workflow-num">03</div>
+        <h4>Billing migration reconciliation</h4>
+        <p>Alteryx pipelines reconciling hundreds of thousands of contracts during a $1B+ Salesforce CPQ-to-Zuora migration, validating revenue logic and catching credit-memo mismatches.</p>
+      </div>
+      <div class="workflow-card">
+        <div class="workflow-num">04</div>
+        <h4>Journal entry risk analytics</h4>
+        <p>Cloud-based journal entry analytics flagging high-risk transactions on listed clients — automating manual sampling and improving testing coverage.</p>
+      </div>
+      <div class="workflow-card">
+        <div class="workflow-num">05</div>
+        <h4>Executive dashboards &amp; KPIs</h4>
+        <p>Power BI dashboards delivering real-time executive KPI and variance insights, replacing static PDF reports with interactive, drill-down analytics for close-cycle visibility.</p>
+      </div>
+      <div class="workflow-card">
+        <div class="workflow-num">06</div>
+        <h4>Document generation pipelines</h4>
+        <p>End-to-end document automation using Claude Cowork skills — branded deliverables, technical memos, and formatted reports generated from structured data with minimal manual intervention.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"><hr></div>
+<!-- ══════ SHIFT · AI IMPACT ══════ -->
+<section id="shift">
+  <div class="section-inner">
+    <div class="section-label fade-up">05 · Perspective</div>
+    <div class="section-head">
+      <h2 class="section-title fade-up">AI won&rsquo;t replace accountants. It will replace <em>accounting.</em></h2>
+      <p class="section-blurb fade-up">
+        The mechanical work is getting automated fast. The real opportunity is moving up-stack — from preparing the numbers to designing the systems that prepare them. That&rsquo;s the seat I want, and the value I bring to teams building what&rsquo;s next.
+      </p>
+    </div>
 
-<!-- EXPERTISE -->
+    <div class="shift-stats stagger">
+      <div class="shift-stat fade-up">
+        <div class="shift-stat-line">
+          <span class="shift-stat-num" data-count-to="77">0</span><span class="shift-stat-unit">%</span>
+        </div>
+        <div class="shift-stat-label">of finance leaders are actively scaling generative AI across their function.</div>
+        <div class="shift-stat-source">Gartner CFO Survey, 2024</div>
+      </div>
+      <div class="shift-stat fade-up">
+        <div class="shift-stat-line">
+          <span class="shift-stat-num" data-count-to="40">0</span><span class="shift-stat-unit">%</span>
+        </div>
+        <div class="shift-stat-label">of core accounting activity is automatable with today&rsquo;s technology — before agentic workflows mature.</div>
+        <div class="shift-stat-source">McKinsey · Future of the Finance Function</div>
+      </div>
+      <div class="shift-stat fade-up">
+        <div class="shift-stat-line">
+          <span class="shift-stat-num">2028</span>
+        </div>
+        <div class="shift-stat-label">Gartner&rsquo;s target year for the first wave of autonomous finance functions to operate at scale.</div>
+        <div class="shift-stat-source">Gartner · Finance Automation Outlook</div>
+      </div>
+    </div>
+
+    <h3 class="shift-sub fade-up">Where the hours go — <em>before vs. after</em> workflows are designed.</h3>
+    <p class="shift-sub-note fade-up">Directional from engagements I&rsquo;ve supported. The hatched bar is pre-AI time allocation; the solid jade bar is what&rsquo;s left once pipelines, agents, and review gates are in place. The delta becomes judgment, narrative, and stakeholder time.</p>
+
+    <div class="chart fade-up" id="shiftChart">
+      <div class="chart-rows">
+        <div class="chart-row">
+          <div class="chart-label">Data gathering &amp; cleanup</div>
+          <div class="chart-track">
+            <div class="chart-fill-old" data-w="88"></div>
+            <div class="chart-fill-new" data-w="22"><span class="chart-pct">−75% time</span></div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Reconciliations &amp; JE checks</div>
+          <div class="chart-track">
+            <div class="chart-fill-old" data-w="74"></div>
+            <div class="chart-fill-new" data-w="18"><span class="chart-pct">−76% time</span></div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Contract review &amp; diligence</div>
+          <div class="chart-track">
+            <div class="chart-fill-old" data-w="82"></div>
+            <div class="chart-fill-new" data-w="30"><span class="chart-pct">−63% time</span></div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Memo &amp; report drafting</div>
+          <div class="chart-track">
+            <div class="chart-fill-old" data-w="68"></div>
+            <div class="chart-fill-new" data-w="24"><span class="chart-pct">−65% time</span></div>
+          </div>
+        </div>
+        <div class="chart-row">
+          <div class="chart-label">Judgment, framing &amp; review</div>
+          <div class="chart-track">
+            <div class="chart-fill-old" data-w="22"></div>
+            <div class="chart-fill-new" data-w="70"><span class="chart-pct">+218% focus</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-legend">
+        <div class="chart-legend-item"><span class="chart-legend-swatch old"></span>Time spent before</div>
+        <div class="chart-legend-item"><span class="chart-legend-swatch new"></span>Time spent after workflows designed</div>
+      </div>
+    </div>
+
+    <div class="shift-split fade-up">
+      <div class="split-col split-replaced">
+        <div class="split-kicker">Automated away</div>
+        <h3>What the agents do.</h3>
+        <ul>
+          <li>Pulling terms from contracts</li>
+          <li>First-pass reconciliations</li>
+          <li>JE creation &amp; variance flags</li>
+          <li>Draft memos &amp; schedules</li>
+          <li>Roll-forwards &amp; tie-outs</li>
+          <li>Basic ASC citation lookups</li>
+        </ul>
+      </div>
+      <div class="split-divider" aria-hidden="true"></div>
+      <div class="split-col split-owned">
+        <div class="split-kicker">Still fully human</div>
+        <h3>What I <em>design &amp; own.</em></h3>
+        <ul>
+          <li>Judgment on ambiguous guidance</li>
+          <li>Choosing which agent does what</li>
+          <li>Validating &amp; signing off on AI outputs</li>
+          <li>Framing conclusions for auditors</li>
+          <li>Risk, materiality &amp; escalation calls</li>
+          <li>The narrative leadership reads</li>
+        </ul>
+      </div>
+    </div>
+
+    <blockquote class="manifesto fade-up">
+      <div class="manifesto-mark">“</div>
+      <p class="manifesto-text">AI doesn&rsquo;t replace the accountant. It replaces the <em>workpaper.</em> The accountant becomes the architect.</p>
+      <div class="manifesto-cite">My operating thesis</div>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ══════ EXPERTISE ══════ -->
 <section id="expertise">
-  <div class="section-header fade-up">
-    <span class="section-number">05</span>
-    <h2 class="section-title">Technical expertise</h2>
-  </div>
-  <div class="skills-grid stagger-children">
-    <div class="skill-card">
-      <div class="skill-card-label">Revenue Recognition</div>
-      <p>ASC 606 across SaaS, consumption-based, API, and bundled arrangements. SSP stratification, principal vs. agent, contract modifications, variable consideration, carve-out models.</p>
+  <div class="section-inner">
+    <div class="section-label fade-up">06 · Technical expertise</div>
+    <div class="section-head">
+      <h2 class="section-title fade-up">Depth where it <em>counts.</em></h2>
+      <p class="section-blurb fade-up">
+        The full stack a tech controller or IPO advisor actually needs — from ASC 606 at scale down to Workiva linked-data templates.
+      </p>
     </div>
-    <div class="skill-card">
-      <div class="skill-card-label">Technical Accounting</div>
-      <p>ASC 718 (SBC), ASC 805/810 (business combinations), ASC 842 (leases), ASC 820/815 (fair value), ASC 350-40 (software costs), ASC 260 (EPS), ASC 855, ASC 280, ASC 326.</p>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-label">Financial Reporting &amp; Close</div>
-      <p>Month-end, quarter-end, and year-end close. Revenue reconciliations, JE review, flux analysis, AR aging, deferred revenue roll-forwards, unbilled receivables, financial statement prep.</p>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-label">SEC &amp; Regulatory</div>
-      <p>S-1 registration, Reg S-K/S-X, SOX 302/404, SEC comment letter response, mock close and earnings release, 10-K/10-Q drafting, DRS filing support.</p>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-label">Billing &amp; Systems</div>
-      <p>Zuora, Salesforce CPQ, NetSuite (ARM), SAP, Oracle, Hyperion. Billing subledger reconciliation, GL account flow validation, JE automation, UAT test scenarios.</p>
-    </div>
-    <div class="skill-card">
-      <div class="skill-card-label">Compliance &amp; Leadership</div>
-      <p>External audit coordination, internal controls, SOX compliance, process documentation. 12+ person team management, mentoring, cross-functional collaboration with FP&A, Tax, Legal, Engineering.</p>
+
+    <div class="expertise-grid stagger">
+      <div class="exp-card">
+        <div class="exp-label">Revenue recognition</div>
+        <h3>ASC 606, end to end</h3>
+        <p>SaaS, consumption-based, API, and bundled arrangements. SSP stratification, principal vs. agent, contract modifications, variable consideration, carve-out models.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-label">Technical accounting</div>
+        <h3>The ASC library, fluent</h3>
+        <p>ASC 718 (SBC), 805/810 (business combinations), 842 (leases), 820/815 (fair value), 350-40 (software costs), 260 (EPS), 855, 280, 326.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-label">Financial reporting</div>
+        <h3>Close &amp; consolidation</h3>
+        <p>Month-, quarter-, year-end close. Revenue reconciliations, JE review, flux analysis, AR aging, deferred revenue roll-forwards, unbilled receivables, FS prep.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-label">SEC &amp; regulatory</div>
+        <h3>Private-to-public ready</h3>
+        <p>S-1 registration, Reg S-K/S-X, SOX 302/404, SEC comment letter response, mock close and earnings release, 10-K/10-Q drafting, DRS filing support.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-label">Billing &amp; systems</div>
+        <h3>Subledger to GL</h3>
+        <p>Zuora, Salesforce CPQ, NetSuite (ARM), SAP, Oracle, Hyperion. Billing subledger reconciliation, GL flow validation, JE automation, UAT scenarios.</p>
+      </div>
+      <div class="exp-card">
+        <div class="exp-label">Compliance &amp; leadership</div>
+        <h3>Cross-functional glue</h3>
+        <p>External audit coordination, internal controls, SOX compliance, process documentation. 12+ person team management, mentoring, work with FP&amp;A, Tax, Legal, Engineering.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"><hr></div>
-
-<!-- EDUCATION -->
+<!-- ══════ EDUCATION ══════ -->
 <section id="education">
-  <div class="section-header fade-up">
-    <span class="section-number">06</span>
-    <h2 class="section-title">Education &amp; credentials</h2>
-  </div>
-  <div class="edu-grid">
-    <div class="edu-item fade-up">
-      <div>
-        <div class="edu-degree">Chartered Professional Accountant (CPA)</div>
-        <div class="edu-school">Washington State, 2023 &middot; Ontario, 2021</div>
-      </div>
-      <div class="edu-year">Active</div>
+  <div class="section-inner">
+    <div class="section-label fade-up">07 · Education &amp; credentials</div>
+    <div class="section-head">
+      <h2 class="section-title fade-up">Credentialed. <em>Current.</em></h2>
+      <p class="section-blurb fade-up">Licensed across two jurisdictions, trained at Schulich, fluent in three frameworks.</p>
     </div>
-    <div class="edu-item fade-up">
-      <div>
-        <div class="edu-degree">Master of Accounting</div>
-        <div class="edu-school">York University, Schulich School of Business</div>
+
+    <div class="edu-list stagger">
+      <div class="edu-row">
+        <div class="edu-year">2021–23</div>
+        <div class="edu-main">
+          <h3>Chartered Professional Accountant (CPA)</h3>
+          <p>Washington State (2023) · Ontario, Canada (2021)</p>
+        </div>
+        <span class="edu-badge active">● Active</span>
       </div>
-      <div class="edu-year">2019</div>
-    </div>
-    <div class="edu-item fade-up">
-      <div>
-        <div class="edu-degree">Bachelor of Business Administration</div>
-        <div class="edu-school">York University, Schulich School of Business</div>
+      <div class="edu-row">
+        <div class="edu-year">2019</div>
+        <div class="edu-main">
+          <h3>Master of Accounting (MAcc)</h3>
+          <p>York University · Schulich School of Business</p>
+        </div>
+        <span class="edu-badge">Graduate</span>
       </div>
-      <div class="edu-year">2018</div>
-    </div>
-    <div class="edu-item fade-up">
-      <div>
-        <div class="edu-degree">GAAP Standard Proficiency</div>
-        <div class="edu-school">US GAAP &middot; IFRS &middot; ASPE (Canada)</div>
+      <div class="edu-row">
+        <div class="edu-year">2018</div>
+        <div class="edu-main">
+          <h3>Bachelor of Business Administration (BBA)</h3>
+          <p>York University · Schulich School of Business</p>
+        </div>
+        <span class="edu-badge">Undergrad</span>
+      </div>
+      <div class="edu-row">
+        <div class="edu-year">Ongoing</div>
+        <div class="edu-main">
+          <h3>Framework proficiency</h3>
+          <p>US GAAP · IFRS · ASPE (Canada)</p>
+        </div>
+        <span class="edu-badge">Fluent</span>
       </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"><hr></div>
+<!-- ══════ LIFE ══════ -->
+<section id="life">
+  <div class="section-inner">
+    <div class="section-label fade-up">08 · Beyond accounting</div>
+    <div class="section-head">
+      <h2 class="section-title fade-up">The best thinking happens <em>off the spreadsheet.</em></h2>
+      <p class="section-blurb fade-up">A few of the things that keep perspective sharp.</p>
+    </div>
 
-<!-- BEYOND ACCOUNTING -->
-<div class="horiz-section" id="beyond">
-  <div class="section-header fade-up">
-    <span class="section-number">07</span>
-    <h2 class="section-title">Beyond accounting</h2>
-  </div>
-  <p class="horiz-intro fade-up">
-    The best thinking happens away from spreadsheets. Here's what recharges me and keeps perspective sharp.
-  </p>
-
-  <div class="horiz-track-wrapper">
-    <div class="horiz-track">
-      <div class="horiz-card">
-        <span class="horiz-card-emoji">&#9968;&#65039;</span>
-        <h3>Hiking</h3>
-        <p>Pacific Northwest trails are home base. Multi-day backcountry trips in the Cascades, Rainier, and the Olympic Peninsula. Nothing resets the mind like elevation gain and no cell service.</p>
-        <div class="card-accent-line"></div>
-      </div>
-      <div class="horiz-card">
-        <span class="horiz-card-emoji">&#9975;&#65039;</span>
-        <h3>Skiing</h3>
-        <p>Weekends at Crystal, Stevens, and Whistler. The combination of speed, risk assessment, and mountain air is the closest thing to a quarterly close that's actually fun.</p>
-        <div class="card-accent-line"></div>
-      </div>
-      <div class="horiz-card">
-        <span class="horiz-card-emoji">&#9992;&#65039;</span>
-        <h3>Travel</h3>
-        <p>Exploring new cities and cultures. From Tokyo to Lisbon, every trip is a lesson in how differently the world operates&mdash;and a reminder that context matters as much in life as it does in accounting.</p>
-        <div class="card-accent-line"></div>
-      </div>
-      <div class="horiz-card">
-        <span class="horiz-card-emoji">&#128218;</span>
-        <h3>Reading</h3>
-        <p>Business strategy, behavioral economics, and the occasional novel. Currently exploring how AI is reshaping professional services and what that means for the next generation of finance leaders.</p>
-        <div class="card-accent-line"></div>
-      </div>
-      <div class="horiz-card">
-        <span class="horiz-card-emoji">&#127917;</span>
-        <h3>Theatre</h3>
-        <p>Live performances&mdash;from Broadway to local productions. There's something about storytelling in real time that sharpens how you think about presenting complex information to an audience.</p>
-        <div class="card-accent-line"></div>
-      </div>
-      <div class="horiz-card">
-        <span class="horiz-card-emoji">&#9917;</span>
-        <h3>Sports</h3>
-        <p>Playing and watching. Soccer, basketball, cricket&mdash;team sports are a constant reminder that the best outcomes come from trust, communication, and knowing your role on the field.</p>
-        <div class="card-accent-line"></div>
+    <div class="life-track-wrap">
+      <div class="life-track">
+        <!-- Hiking -->
+        <article class="life-card">
+          <div class="life-num">01 · Outside</div>
+          <svg class="life-icon" viewBox="0 0 48 48"><path d="M6 40 L18 18 L26 30 L34 12 L42 40 Z"/><circle cx="34" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg>
+          <h3>Hiking</h3>
+          <p>Pacific Northwest trails are home base — multi-day backcountry trips in the Cascades, Rainier, and the Olympic Peninsula. Nothing resets the mind like elevation gain and no cell service.</p>
+        </article>
+        <!-- Skiing -->
+        <article class="life-card">
+          <div class="life-num">02 · Winter</div>
+          <svg class="life-icon" viewBox="0 0 48 48"><path d="M10 38 L38 10"/><path d="M8 40 L36 12"/><path d="M24 24 L32 20"/><path d="M18 30 L26 26"/></svg>
+          <h3>Skiing</h3>
+          <p>Weekends at Crystal, Stevens, and Whistler. Speed, risk assessment, and mountain air — the closest thing to a quarterly close that&rsquo;s actually fun.</p>
+        </article>
+        <!-- Travel -->
+        <article class="life-card">
+          <div class="life-num">03 · World</div>
+          <svg class="life-icon" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><ellipse cx="24" cy="24" rx="8" ry="18"/><path d="M6 24 H42"/></svg>
+          <h3>Travel</h3>
+          <p>From Tokyo to Lisbon, every trip is a lesson in how differently the world operates — and a reminder that context matters as much in life as it does in accounting.</p>
+        </article>
+        <!-- Reading -->
+        <article class="life-card">
+          <div class="life-num">04 · Ideas</div>
+          <svg class="life-icon" viewBox="0 0 48 48"><path d="M8 10 L24 14 L40 10 L40 38 L24 42 L8 38 Z"/><path d="M24 14 V42"/></svg>
+          <h3>Reading</h3>
+          <p>Business strategy, behavioral economics, and the occasional novel. Currently exploring how AI is reshaping professional services and what that means for the next generation of finance leaders.</p>
+        </article>
+        <!-- Theatre -->
+        <article class="life-card">
+          <div class="life-num">05 · Stage</div>
+          <svg class="life-icon" viewBox="0 0 48 48"><path d="M10 14 Q24 8 38 14"/><path d="M14 16 Q14 32 24 38 Q34 32 34 16"/><circle cx="19" cy="24" r="1.5" fill="currentColor" stroke="none"/><circle cx="29" cy="24" r="1.5" fill="currentColor" stroke="none"/><path d="M20 30 Q24 32 28 30"/></svg>
+          <h3>Theatre</h3>
+          <p>Live performances — Broadway to local productions. Storytelling in real time sharpens how you think about presenting complex information to any audience.</p>
+        </article>
+        <!-- Sports -->
+        <article class="life-card">
+          <div class="life-num">06 · Team</div>
+          <svg class="life-icon" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 6 L30 18 L42 20"/><path d="M24 6 L18 18 L6 20"/><path d="M18 18 L12 32 L24 40"/><path d="M30 18 L36 32 L24 40"/></svg>
+          <h3>Sports</h3>
+          <p>Playing and watching — soccer, basketball, cricket. Team sports are a constant reminder that the best outcomes come from trust, communication, and knowing your role on the field.</p>
+        </article>
       </div>
     </div>
   </div>
-  <div class="scroll-hint fade-up">
-    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-    Scroll to explore
-  </div>
-</div>
+</section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <span class="footer-text">Ramneek Suri &middot; 2026</span>
-    <div class="footer-links">
-      <a href="mailto:ramneek100@gmail.com">Email</a>
-      <a href="tel:+12066040248">Phone</a>
+<!-- ══════ FINAL CTA ══════ -->
+<section class="final-cta">
+  <div class="cta-box fade-up">
+    <div class="cta-inner">
+      <div class="cta-kicker">Let&rsquo;s build</div>
+      <h2 class="cta-title">If you&rsquo;re building something <em>technically hard</em>, I&rsquo;d like to hear about it.</h2>
+      <p class="cta-sub">AI finance roles, IPO advisory, tech controllership, or just a coffee about where accounting meets agents — always open to a conversation.</p>
+      <div class="cta-actions">
+        <a href="/cdn-cgi/l/email-protection#6210030f0c07070953525222050f030b0e4c010d0f" class="btn btn-primary">
+          <span class="__cf_email__" data-cfemail="bcceddd1d2d9d9d78d8c8cfcdbd1ddd5d092dfd3d1">[email&#160;protected]</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="tel:+12066040248" class="btn btn-secondary">+1 206-604-0248</a>
+      </div>
     </div>
+  </div>
+</section>
+
+<footer class="site-foot">
+  <div class="foot-text">© 2026 Ramneek Suri · Built with care in Seattle</div>
+  <div class="foot-links">
+    <a href="/cdn-cgi/l/email-protection#7200131f1c17171943424232151f131b1e5c111d1f">Email</a>
+    <a href="tel:+12066040248">Phone</a>
+    <a href="#">Top &uarr;</a>
   </div>
 </footer>
 
-<script>
-// ── Role accordion ──
-function toggleRole(header) {
-  const item = header.parentElement;
-  const wasActive = item.classList.contains('active');
-  item.closest('.timeline-company').querySelectorAll('.role-item').forEach(r => r.classList.remove('active'));
-  if (!wasActive) item.classList.add('active');
-}
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Tool detail panel ──
+  const toolData = {
+    'claude-cowork': {
+      title: 'Claude Cowork',
+      text: 'Central hub for multi-step automation workflows that cut hours out of recurring deliverable cycles. Custom skills generate branded technical memos, structured reports, and formatted client deliverables from raw inputs — turning half a day of formatting into a few minutes of review.'
+    },
+    'claude-code': {
+      title: 'Claude Code',
+      text: 'Scraped and organized SEC filings for technical accounting analyses — 10-Ks and proxy statements pulled into structured folders, with a personalized benchmarking tool for peer comparisons. Automated variance analysis across large GL datasets, generated disclosure checklists, and batch-processed financial extracts during M&A diligence. Weekend work turned into minutes.'
+    },
+    'vscode': {
+      title: 'VS Code',
+      text: 'Built interest rate risk models mapping swap curves, benchmark rates, and exposure schedules from multiple data sources into one cohesive output. Produced first-cut technical analyses, reconciliation templates, lease schedules, and consolidation workpapers across datasets too large and complex for spreadsheets alone.'
+    },
+    'replit': {
+      title: 'Replit',
+      text: 'Replaced static slide decks and PDFs with interactive dashboards that give leadership teams real-time visibility into what matters — close-cycle progress, revenue waterfall breakdowns, deferred revenue rollforwards, SBC expense forecasts. Executives drill into the data themselves instead of waiting on a monthly deck.'
+    },
+    'harvey': {
+      title: 'Harvey AI',
+      text: 'Reviewed hundreds of contracts during M&A diligence — surfacing complex terms, revenue-related provisions, and risk flags that would have taken days to find manually. Specifically leveraged for ASC 606 contract analysis at scale. Built recurring workflows that cut diligence cycle times and standardized output quality across engagements.'
+    },
+    'totiq': {
+      title: 'TotIQ',
+      text: 'Analyzed several thousand files across IPO readiness engagements, reducing final report generation cycle times from weeks to days. Combined questionnaires, PBC documentation, and SME feedback into condensed, actionable deliverables ready for client and auditor review.'
+    },
+    'alteryx': {
+      title: 'Alteryx',
+      text: 'Reconciled hundreds of thousands of contracts during a $1B+ billing system migration — catching mismatches and validating revenue recognition logic across subledgers. Compressed weeks of manual spreadsheet work into hours, and built reusable workflows the broader team adopted across other engagements.'
+    },
+    'powerbi': {
+      title: 'Power BI',
+      text: 'Transitioned multiple clients from PDF-based reporting to live, interactive dashboards with drill-down KPI views, variance analysis, and real-time data refresh. Materially improved close-cycle visibility and the speed at which leadership could act on financial data.'
+    }
+  };
 
-// ── AI tool detail panel ──
-const toolData = {
-  'claude-cowork': {
-    title: 'Claude Cowork',
-    text: 'Central hub for multi-step automation workflows that cut hours out of recurring deliverable cycles. Built custom skills that generate branded technical memos, structured reports, and formatted client deliverables from raw inputs, turning what used to be half a day of formatting into a few minutes of review.'
-  },
-  'claude-code': {
-    title: 'Claude Code',
-    text: 'Scraped and organized SEC filings for technical accounting analyses, pulling markdown versions of 10-Ks and proxy statements into structured folders and building a personalized benchmarking tool for peer company comparisons. Automated variance analysis across large GL datasets, generated disclosure checklists from raw filing data, and batch-processed financial statement extracts during M&A diligence. Turned tasks that used to eat up entire weekends into repeatable processes that run in minutes.'
-  },
-  'vscode': {
-    title: 'VS Code',
-    text: 'Built interest rate risk models mapping swap curves, benchmark rates, and exposure schedules from several data sources into one cohesive output. Produced first-cut technical analyses, reconciliation templates, lease accounting schedules, and consolidation workpapers across datasets too large and complex for spreadsheets alone. Cut initial analysis time significantly by handling the heavy data structuring upfront.'
-  },
-  'replit': {
-    title: 'Replit',
-    text: 'Replaced static slide decks and PDFs with interactive dashboards that give leadership teams real-time visibility into what matters. Built dashboards tracking close-cycle progress, revenue waterfall breakdowns, deferred revenue rollforwards, and SBC expense forecasts. Executives can drill into days-to-close, journal entry volume trends, and reconciliation aging on their own instead of waiting for a monthly deck.'
-  },
-  'harvey': {
-    title: 'Harvey AI',
-    text: 'Reviewed hundreds of contracts during M&A diligence, surfacing complex agreement terms, revenue-related provisions, and risk flags that would have taken days to find manually. Specifically leveraged for ASC 606 contract analysis at scale. Built recurring workflows using the workflow builder that automated review processes across engagement teams, cutting diligence cycle times and standardizing output quality.'
-  },
-  'totiq': {
-    title: 'TotIQ',
-    text: 'Analyzed several thousand files across IPO readiness engagements, reducing final report generation cycle times from weeks to several days. Combined questionnaires, PBC documentation, and SME feedback into condensed, actionable deliverables ready for client and auditor review. Eliminated the manual document-by-document review process that was the single biggest bottleneck on readiness timelines.'
-  },
-  'alteryx': {
-    title: 'Alteryx',
-    text: 'Reconciled hundreds of thousands of contracts during a $1B+ billing system migration, catching mismatches and validating revenue recognition logic across subledgers. Compressed weeks of manual spreadsheet work into hours. Built reusable workflows that the broader team adopted for recurring reconciliation and data transformation tasks across other engagements.'
-  },
-  'powerbi': {
-    title: 'Power BI',
-    text: 'Transitioned multiple clients from PDF-based reporting to live, interactive dashboards with drill-down KPI views, variance analysis, and real-time data refresh. Materially improved close-cycle visibility and the speed at which leadership could act on financial data. Dashboards became the standard reporting format adopted by client finance teams going forward.'
+  function showTool(btn) {
+    const tool = btn.dataset.tool;
+    const d = toolData[tool];
+    document.querySelectorAll('.ai-chip').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    const inner = document.getElementById('aiPanelInner');
+    inner.innerHTML = '<div class="ai-panel-kicker">Tool in focus</div>' +
+      '<h3 class="ai-panel-title">' + d.title + '</h3>' +
+      '<p class="ai-panel-text">' + d.text + '</p>';
   }
-};
 
-function showTool(chip) {
-  const tool = chip.dataset.tool;
-  const data = toolData[tool];
-  const panel = document.getElementById('aiDetailPanel');
-  document.querySelectorAll('.ai-tool-chip').forEach(c => c.classList.remove('active'));
-  chip.classList.add('active');
-  panel.classList.add('has-content');
-  panel.innerHTML = '<div class="ai-detail-title">' + data.title + '</div><div class="ai-detail-text">' + data.text + '</div>';
-}
+  // ── Role accordion ──
+  function toggleRole(header) {
+    const item = header.parentElement;
+    const wasActive = item.classList.contains('active');
+    item.closest('.company-block').querySelectorAll('.role-card').forEach(r => r.classList.remove('active'));
+    if (!wasActive) item.classList.add('active');
+  }
 
-// ── Scroll-triggered animations ──
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  // Auto-open first role per company
+  document.querySelectorAll('.company-block').forEach(c => {
+    const first = c.querySelector('.role-card');
+    if (first) first.classList.add('active');
+  });
+
+  // ── Reveal on scroll ──
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-up, .reveal-mask, .stagger').forEach(el => io.observe(el));
+
+    // ── Counter animation ──
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = +el.dataset.countTo;
+        const duration = 1600;
+        const start = performance.now();
+        const easeOut = t => 1 - Math.pow(1 - t, 3);
+        function tick(now) {
+          const p = Math.min((now - start) / duration, 1);
+          el.textContent = Math.round(target * easeOut(p));
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(tick);
+        counterObs.unobserve(el);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('[data-count-to]').forEach(el => counterObs.observe(el));
+
+    // ── Bar chart fill ──
+    const chartObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const chart = e.target;
+        chart.classList.add('visible');
+        chart.querySelectorAll('.chart-fill-old, .chart-fill-new').forEach(bar => {
+          bar.style.width = bar.dataset.w + '%';
+        });
+        chartObs.unobserve(chart);
+      });
+    }, { threshold: 0.3 });
+    const chart = document.getElementById('shiftChart');
+    if (chart) chartObs.observe(chart);
+
+    // Hero reveal mask cascade
+    const masks = document.querySelectorAll('.hero .reveal-mask');
+    masks.forEach((m, i) => setTimeout(() => m.classList.add('visible'), 140 + i * 140));
+    const heroFades = document.querySelectorAll('.hero .fade-up');
+    heroFades.forEach((m, i) => setTimeout(() => m.classList.add('visible'), 700 + i * 120));
+  } else {
+    // reduced motion: show bars instantly
+    document.querySelectorAll('.chart-fill-old, .chart-fill-new').forEach(bar => {
+      bar.style.width = bar.dataset.w + '%';
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('[data-count-to]').forEach(el => el.textContent = el.dataset.countTo);
+  }
 
-  document.querySelectorAll('.fade-up, .reveal-line, .stagger-children').forEach(el => observer.observe(el));
-
-  // Stagger the hero reveal lines
-  const heroLines = document.querySelectorAll('.hero .reveal-line');
-  heroLines.forEach((line, i) => {
-    setTimeout(() => line.classList.add('visible'), 200 + i * 120);
-  });
-
-  // Hero fade-ups after lines finish
-  const heroFades = document.querySelectorAll('.hero .fade-up');
-  heroFades.forEach((el, i) => {
-    setTimeout(() => el.classList.add('visible'), 800 + i * 150);
-  });
-}
-
-// Auto-open first role in each company
-document.querySelectorAll('.timeline-company').forEach(company => {
-  const first = company.querySelector('.role-item');
-  if (first) first.classList.add('active');
-});
+  /* ────── Today stamp ────── */
+  (function() {
+    const el = document.getElementById('todayStamp');
+    if (!el) return;
+    const d = new Date();
+    const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    el.textContent = `${months[d.getMonth()]}. ${d.getDate()}, ${d.getFullYear()}`;
+  })();
 </script>
-
 </body>
 </html>
